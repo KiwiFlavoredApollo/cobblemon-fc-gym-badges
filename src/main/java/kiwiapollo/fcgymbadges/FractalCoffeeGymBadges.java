@@ -1,9 +1,11 @@
 package kiwiapollo.fcgymbadges;
 
+import com.mojang.logging.LogUtils;
 import kiwiapollo.fcgymbadges.commands.FractalCoffeeGymBadgeCommands;
 import kiwiapollo.fcgymbadges.gymbadges.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import org.slf4j.Logger;
 
 public class FractalCoffeeGymBadges implements ModInitializer {
 
@@ -14,6 +16,7 @@ public class FractalCoffeeGymBadges implements ModInitializer {
     public static final GymBadge rockTypeGymBadge = new RockTypeGymBadge();
     public static final GymBadgeItemGroup gymBadgeItemGroup = new GymBadgeItemGroup();
     public static final FractalCoffeeGymBadgeCommands commands = new FractalCoffeeGymBadgeCommands();
+    public static final Logger logger = LogUtils.getLogger();
 
     @Override
     public void onInitialize() {

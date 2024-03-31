@@ -11,21 +11,11 @@ public abstract class GymBadge {
 
     private final Item item;
     private final Identifier identifier;
-    protected String itemName;
 
-    public GymBadge() {
-        defineItemName();
-        item = getInitItem();
-        identifier = getInitIdentifier();
+    public GymBadge(String itemName) {
+        this.item = new Item(new FabricItemSettings());
+        this.identifier = new Identifier(FractalCoffeeGymBadges.NAMESPACE, itemName);
         registerItem();
-    }
-
-    private Item getInitItem() {
-        return new Item(new FabricItemSettings());
-    }
-
-    private Identifier getInitIdentifier() {
-        return new Identifier(FractalCoffeeGymBadges.NAMESPACE, itemName);
     }
 
     private void registerItem() {
@@ -35,6 +25,4 @@ public abstract class GymBadge {
     public Item getItem() {
         return item;
     }
-
-    protected abstract void defineItemName();
 }

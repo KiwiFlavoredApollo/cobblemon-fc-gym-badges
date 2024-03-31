@@ -1,4 +1,4 @@
-package kiwiapollo.fcgymbadges;
+package kiwiapollo.fcgymbadges.gymbadges;
 
 public class DarkTypeGymBadge extends GymBadge {
     @Override

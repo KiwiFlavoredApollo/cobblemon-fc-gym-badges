@@ -4,7 +4,9 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.exceptions.PlayerGymBadgeExistException;
+import kiwiapollo.fcgymbadges.storage.GymBadgeCase;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -19,40 +21,54 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
             sendGiveGymBadgeSuccessfulMessage(context);
             return Command.SINGLE_SUCCESS;
         } catch (PlayerGymBadgeExistException e) {
+            FractalCoffeeGymBadges.logger.debug(e.getMessage());
             sendGiveGymBadgeErrorMessage(context);
             return -1;
         }
     }
 
     private void giveGymBadgeToPlayer(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
-
+        ServerPlayerEntity player = getPlayerArgument(context);
+        String gymBadge = getGymBadgeArgument(context);
+        GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
+        gymBadgeCase.addGymBadge(gymBadge);
+        gymBadgeCase.save();
     }
 
     private void assertNotExistPlayerBadge(CommandContext<ServerCommandSource> context)
-            throws PlayerGymBadgeExistException {
+            throws PlayerGymBadgeExistException, CommandSyntaxException {
 
+        ServerPlayerEntity player = getPlayerArgument(context);
+        String gymBadge = getGymBadgeArgument(context);
+        GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
+
+        if(gymBadgeCase.isExistGymBadge(gymBadge)) {
+            String message = String.format("%s already have %s", player.getGameProfile().getName(), gymBadge);
+            throw(new PlayerGymBadgeExistException(message));
+        }
     }
 
     private void sendGiveGymBadgeSuccessfulMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         ServerPlayerEntity player = getPlayerArgument(context);
         String gymBadge = getGymBadgeArgument(context);
-        context.getSource().sendMessage(
-                Text.literal(String.format("Gave %s to %s",
-                        gymBadge, player.getGameProfile().getName())));
+        String message = String.format("Gave %s to %s", gymBadge, player.getGameProfile().getName());
+        context.getSource().sendMessage(Text.literal(message));
     }
 
     private void sendGiveGymBadgeErrorMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         ServerPlayerEntity player = getPlayerArgument(context);
         String gymBadge = getGymBadgeArgument(context);
-        context.getSource().sendError(
-                Text.literal(String.format("Failed to give %s to %s",
-                        gymBadge, player.getGameProfile().getName())));
+        String message = String.format("Failed to give %s to %s", gymBadge, player.getGameProfile().getName());
+        context.getSource().sendError(Text.literal(message));
     }
 
     private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         return EntityArgumentType.getPlayer(context, "player");
     }
 

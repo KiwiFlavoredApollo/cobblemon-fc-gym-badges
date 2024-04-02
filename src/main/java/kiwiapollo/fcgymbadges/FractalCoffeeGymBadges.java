@@ -1,7 +1,7 @@
 package kiwiapollo.fcgymbadges;
 
 import com.mojang.logging.LogUtils;
-import kiwiapollo.fcgymbadges.commands.FractalCoffeeGymBadgeCommands;
+import kiwiapollo.fcgymbadges.commands.GymBadgeCommands;
 import kiwiapollo.fcgymbadges.gymbadges.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -15,7 +15,7 @@ public class FractalCoffeeGymBadges implements ModInitializer {
     public static final GymBadge FLYING_TYPE_GYM_BADGE = new FlyingTypeGymBadge();
     public static final GymBadge ROCK_TYPE_GYM_BADGE = new RockTypeGymBadge();
     public static final GymBadgeItemGroup GYM_BADGE_ITEM_GROUP = new GymBadgeItemGroup();
-    public static final FractalCoffeeGymBadgeCommands GYM_BADGE_COMMANDS = new FractalCoffeeGymBadgeCommands();
+    public static final GymBadgeCommands GYM_BADGE_COMMANDS = new GymBadgeCommands();
     public static final Logger LOGGER = LogUtils.getLogger();
 
     @Override

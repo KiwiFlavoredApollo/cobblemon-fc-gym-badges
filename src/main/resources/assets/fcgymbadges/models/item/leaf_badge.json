@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "fcgymbadges:item/leaf_type"
+    "layer0": "fcgymbadges:item/leaf_badge"
   }
 }

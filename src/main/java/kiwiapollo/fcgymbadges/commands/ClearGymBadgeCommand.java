@@ -21,7 +21,7 @@ public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
             sendClearPlayerGymBadgeSuccessfulMessage(context);
             return Command.SINGLE_SUCCESS;
         } catch (PlayerGymBadgeNotExistException e) {
-            FractalCoffeeGymBadges.logger.debug(e.getMessage());
+            FractalCoffeeGymBadges.LOGGER.debug(e.getMessage());
             sendClearPlayerGymBadgeErrorMessage(context);
             return -1;
         }

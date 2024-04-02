@@ -21,7 +21,7 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
             sendGiveGymBadgeSuccessfulMessage(context);
             return Command.SINGLE_SUCCESS;
         } catch (PlayerGymBadgeExistException e) {
-            FractalCoffeeGymBadges.logger.debug(e.getMessage());
+            FractalCoffeeGymBadges.LOGGER.debug(e.getMessage());
             sendGiveGymBadgeErrorMessage(context);
             return -1;
         }

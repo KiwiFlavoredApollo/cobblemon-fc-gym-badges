@@ -10,13 +10,13 @@ import org.slf4j.Logger;
 public class FractalCoffeeGymBadges implements ModInitializer {
 
     public static final String NAMESPACE = "fcgymbadges";
-    public static final GymBadge darkTypeGymBadge = new DarkTypeGymBadge();
-    public static final GymBadge leafTypeGymBadge = new LeafTypeGymBadge();
-    public static final GymBadge flyingTypeGymBadge = new FlyingTypeGymBadge();
-    public static final GymBadge rockTypeGymBadge = new RockTypeGymBadge();
-    public static final GymBadgeItemGroup gymBadgeItemGroup = new GymBadgeItemGroup();
-    public static final FractalCoffeeGymBadgeCommands commands = new FractalCoffeeGymBadgeCommands();
-    public static final Logger logger = LogUtils.getLogger();
+    public static final GymBadge DARK_TYPE_GYM_BADGE = new DarkTypeGymBadge();
+    public static final GymBadge LEAF_TYPE_GYM_BADGE = new LeafTypeGymBadge();
+    public static final GymBadge FLYING_TYPE_GYM_BADGE = new FlyingTypeGymBadge();
+    public static final GymBadge ROCK_TYPE_GYM_BADGE = new RockTypeGymBadge();
+    public static final GymBadgeItemGroup GYM_BADGE_ITEM_GROUP = new GymBadgeItemGroup();
+    public static final FractalCoffeeGymBadgeCommands GYM_BADGE_COMMANDS = new FractalCoffeeGymBadgeCommands();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     @Override
     public void onInitialize() {
@@ -25,13 +25,13 @@ public class FractalCoffeeGymBadges implements ModInitializer {
     }
 
     private void registerItems() {
-        gymBadgeItemGroup.addGymBadge(darkTypeGymBadge);
-        gymBadgeItemGroup.addGymBadge(leafTypeGymBadge);
-        gymBadgeItemGroup.addGymBadge(flyingTypeGymBadge);
-        gymBadgeItemGroup.addGymBadge(rockTypeGymBadge);
+        GYM_BADGE_ITEM_GROUP.addGymBadge(DARK_TYPE_GYM_BADGE);
+        GYM_BADGE_ITEM_GROUP.addGymBadge(LEAF_TYPE_GYM_BADGE);
+        GYM_BADGE_ITEM_GROUP.addGymBadge(FLYING_TYPE_GYM_BADGE);
+        GYM_BADGE_ITEM_GROUP.addGymBadge(ROCK_TYPE_GYM_BADGE);
     }
 
     private void registerCommands() {
-        CommandRegistrationCallback.EVENT.register(commands::register);
+        CommandRegistrationCallback.EVENT.register(GYM_BADGE_COMMANDS::register);
     }
 }

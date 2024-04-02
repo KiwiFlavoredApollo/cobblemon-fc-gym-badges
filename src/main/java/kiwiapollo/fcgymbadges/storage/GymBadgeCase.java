@@ -36,7 +36,7 @@ public class GymBadgeCase implements JsonFile {
         try {
             return loadGymBadgesFromFile();
         } catch (JsonFileReadErrorException e) {
-            FractalCoffeeGymBadges.logger.debug(e.getMessage());
+            FractalCoffeeGymBadges.LOGGER.debug(e.getMessage());
             return loadGymBadgesFromDefault();
         }
     }
@@ -70,7 +70,7 @@ public class GymBadgeCase implements JsonFile {
         try {
             saveGymBadgesToFile();
         } catch (JsonFileWriteErrorException e) {
-            FractalCoffeeGymBadges.logger.debug(e.getMessage());
+            FractalCoffeeGymBadges.LOGGER.debug(e.getMessage());
             throw new RuntimeException(e);
         }
     }

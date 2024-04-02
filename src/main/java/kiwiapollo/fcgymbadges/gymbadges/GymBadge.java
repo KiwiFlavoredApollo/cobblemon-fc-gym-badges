@@ -25,4 +25,8 @@ public class GymBadge {
     public Item getItem() {
         return item;
     }
+
+    public String getName() {
+        return item.getName().getString();
+    }
 }

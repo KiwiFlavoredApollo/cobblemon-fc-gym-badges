@@ -8,7 +8,6 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.slf4j.Logger;
 
 public class FractalCoffeeGymBadges implements ModInitializer {
-
     public static final String NAMESPACE = "fcgymbadges";
     public static final GymBadge DARK_TYPE_GYM_BADGE = new DarkTypeGymBadge();
     public static final GymBadge LEAF_TYPE_GYM_BADGE = new LeafTypeGymBadge();
@@ -20,11 +19,11 @@ public class FractalCoffeeGymBadges implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        addGymBadgesToItemGroup();
         registerCommands();
-        registerItems();
     }
 
-    private void registerItems() {
+    private void addGymBadgesToItemGroup() {
         GYM_BADGE_ITEM_GROUP.addGymBadge(DARK_TYPE_GYM_BADGE);
         GYM_BADGE_ITEM_GROUP.addGymBadge(LEAF_TYPE_GYM_BADGE);
         GYM_BADGE_ITEM_GROUP.addGymBadge(FLYING_TYPE_GYM_BADGE);

@@ -16,25 +16,27 @@ public class GymBadgeItemGroup {
     private final Item itemGroupIcon;
     private final ItemGroup itemGroup;
     private final Identifier identifier;
+
     public GymBadgeItemGroup() {
-        itemGroupIcon = getInitItemGroupIcon();
-        itemGroup = getInitItemGroup();
-        identifier = getInitIdentifier();
+        itemGroupIcon = createItemGroupIcon();
+        itemGroup = createItemGroup();
+        identifier = createIdentifier();
+
         registerItemGroup();
     }
 
-    private Item getInitItemGroupIcon() {
+    private Item createItemGroupIcon() {
         return FractalCoffeeGymBadges.DARK_TYPE_GYM_BADGE.getItem();
     }
 
-    private ItemGroup getInitItemGroup() {
+    private ItemGroup createItemGroup() {
         return FabricItemGroup.builder()
                 .icon(() -> new ItemStack(itemGroupIcon))
                 .displayName(Text.translatable("Cobblemon FC Gym Badges"))
                 .build();
     }
 
-    private Identifier getInitIdentifier() {
+    private Identifier createIdentifier() {
         return new Identifier(FractalCoffeeGymBadges.NAMESPACE, "item_group");
     }
 

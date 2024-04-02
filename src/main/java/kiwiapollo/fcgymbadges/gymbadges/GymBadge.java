@@ -7,7 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public abstract class GymBadge {
+public class GymBadge {
     private final Item item;
     private final Identifier identifier;
 

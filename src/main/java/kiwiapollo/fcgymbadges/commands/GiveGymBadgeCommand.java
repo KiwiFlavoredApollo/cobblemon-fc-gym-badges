@@ -61,7 +61,7 @@ public abstract class GiveGymBadgeCommand implements Command<ServerCommandSource
         context.getSource().sendError(Text.literal(message));
     }
 
-    private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
+    protected ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
 
         return EntityArgumentType.getPlayer(context, "player");

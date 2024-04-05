@@ -58,7 +58,7 @@ public abstract class ClearGymBadgeCommand implements Command<ServerCommandSourc
         context.getSource().sendError(Text.literal(message));
     }
 
-    private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
+    protected ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
         return EntityArgumentType.getPlayer(context, "player");
     }

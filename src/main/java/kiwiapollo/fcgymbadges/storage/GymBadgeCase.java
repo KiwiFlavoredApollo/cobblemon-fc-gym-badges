@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.exceptions.JsonFileReadErrorException;
 import kiwiapollo.fcgymbadges.exceptions.JsonFileWriteErrorException;
+import kiwiapollo.fcgymbadges.exceptions.LegacyJsonFileException;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.io.*;
@@ -43,10 +44,33 @@ public class GymBadgeCase implements JsonFile {
 
     private JsonObject loadGymBadgesFromFile() throws JsonFileReadErrorException {
         try {
-            return readJsonFile();
+            JsonObject jsonObject = readJsonFile();
+            assertNotLegacyJsonFile(jsonObject);
+            return jsonObject;
+        } catch (LegacyJsonFileException e) {
+            FractalCoffeeGymBadges.LOGGER.debug("Loaded gym badges from legacy json file");
+            return readFromLegacy(e.getJsonObject());
         } catch (FileNotFoundException e) {
             throw new JsonFileReadErrorException("Failed to read json file");
         }
+    }
+
+    private void assertNotLegacyJsonFile(JsonObject jsonObject) throws LegacyJsonFileException {
+        if(jsonObject.has("darkTypeGymBadge") ||
+                jsonObject.has("leafTypeGymBadge") ||
+                jsonObject.has("flyingTypeGymBadge") ||
+                jsonObject.has("rockTypeGymBadge")) {
+            throw new LegacyJsonFileException(jsonObject);
+        }
+    }
+
+    private JsonObject readFromLegacy(JsonObject jsonObject) {
+        JsonObject newJsonObject = new JsonObject();
+        newJsonObject.addProperty(getDarkBadgeCamelCase(), jsonObject.get("darkTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(getLeafBadgeCamelCase(), jsonObject.get("leafTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(getFlyingBadgeCamelCase(), jsonObject.get("flyingTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(getRockBadgeCamelCase(), jsonObject.get("rockTypeGymBadge").getAsBoolean());
+        return newJsonObject;
     }
 
     private JsonObject readJsonFile() throws FileNotFoundException {
@@ -57,12 +81,10 @@ public class GymBadgeCase implements JsonFile {
 
     private JsonObject loadGymBadgesFromDefault() {
         JsonObject jsonObject =  new JsonObject();
-
-        jsonObject.addProperty("darkTypeGymBadge", false);
-        jsonObject.addProperty("leafTypeGymBadge", false);
-        jsonObject.addProperty("flyingTypeGymBadge", false);
-        jsonObject.addProperty("rockTypeGymBadge", false);
-
+        jsonObject.addProperty(getDarkBadgeCamelCase(), false);
+        jsonObject.addProperty(getLeafBadgeCamelCase(), false);
+        jsonObject.addProperty(getFlyingBadgeCamelCase(), false);
+        jsonObject.addProperty(getRockBadgeCamelCase(), false);
         return jsonObject;
     }
 
@@ -108,15 +130,67 @@ public class GymBadgeCase implements JsonFile {
         return Paths.get(config, FractalCoffeeGymBadges.NAMESPACE, getFileName()).toString();
     }
 
-    public void addGymBadge(String gymBadge) {
-        gymBadges.addProperty(gymBadge, true);
+    private String getDarkBadgeCamelCase() {
+        return FractalCoffeeGymBadges.DARK_TYPE_GYM_BADGE.getNameCamelCase();
     }
 
-    public void removeGymBadge(String gymBadge) {
-        gymBadges.addProperty(gymBadge, false);
+    public boolean isExistDarkBadge() {
+        return gymBadges.get(getDarkBadgeCamelCase()).getAsBoolean();
     }
 
-    public boolean isExistGymBadge(String gymBadge) {
-        return gymBadges.get(gymBadge).getAsBoolean();
+    public void addDarkBadge() {
+        gymBadges.addProperty(getDarkBadgeCamelCase(), true);
+    }
+
+    public void removeDarkBadge() {
+        gymBadges.addProperty(getDarkBadgeCamelCase(), false);
+    }
+
+    private String getLeafBadgeCamelCase() {
+        return FractalCoffeeGymBadges.LEAF_TYPE_GYM_BADGE.getNameCamelCase();
+    }
+
+    public boolean isExistLeafBadge() {
+        return gymBadges.get(getLeafBadgeCamelCase()).getAsBoolean();
+    }
+
+    public void addLeafBadge() {
+        gymBadges.addProperty(getLeafBadgeCamelCase(), true);
+    }
+
+    public void removeLeafBadge() {
+        gymBadges.addProperty(getLeafBadgeCamelCase(), false);
+    }
+
+    private String getFlyingBadgeCamelCase() {
+        return FractalCoffeeGymBadges.FLYING_TYPE_GYM_BADGE.getNameCamelCase();
+    }
+
+    public boolean isExistFlyingBadge() {
+        return gymBadges.get(getFlyingBadgeCamelCase()).getAsBoolean();
+    }
+
+    public void addFlyingBadge() {
+        gymBadges.addProperty(getFlyingBadgeCamelCase(), true);
+    }
+
+    public void removeFlyingBadge() {
+        gymBadges.addProperty(getFlyingBadgeCamelCase(), false);
+    }
+
+    private String getRockBadgeCamelCase() {
+        return FractalCoffeeGymBadges.ROCK_TYPE_GYM_BADGE.getNameCamelCase();
+    }
+
+    public boolean isExistRockBadge() {
+        return gymBadges.get(getRockBadgeCamelCase()).getAsBoolean();
+    }
+
+    public void addRockBadge() {
+        gymBadges.addProperty(getRockBadgeCamelCase(), true);
+    }
+
+    public void removeRockBadge() {
+        gymBadges.addProperty(getRockBadgeCamelCase(), false);
     }
 }

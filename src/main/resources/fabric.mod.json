@@ -35,6 +35,10 @@
 		"java": ">=17",
 		"fabric-api": "*"
 	},
+	"recommends": {
+		"cobblemon": "*",
+		"luckperms": ">=5.4"
+	},
 	"suggests": {
 		"another-mod": "*"
 	}

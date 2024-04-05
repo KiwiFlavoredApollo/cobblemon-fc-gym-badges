@@ -131,7 +131,7 @@ public class GymBadgeCase implements JsonFile {
     }
 
     private String getDarkBadgeCamelCase() {
-        return FractalCoffeeGymBadges.DARK_TYPE_GYM_BADGE.getNameCamelCase();
+        return FractalCoffeeGymBadges.DARK_BADGE.getNameCamelCase();
     }
 
     public boolean isExistDarkBadge() {
@@ -147,7 +147,7 @@ public class GymBadgeCase implements JsonFile {
     }
 
     private String getLeafBadgeCamelCase() {
-        return FractalCoffeeGymBadges.LEAF_TYPE_GYM_BADGE.getNameCamelCase();
+        return FractalCoffeeGymBadges.LEAF_BADGE.getNameCamelCase();
     }
 
     public boolean isExistLeafBadge() {
@@ -163,7 +163,7 @@ public class GymBadgeCase implements JsonFile {
     }
 
     private String getFlyingBadgeCamelCase() {
-        return FractalCoffeeGymBadges.FLYING_TYPE_GYM_BADGE.getNameCamelCase();
+        return FractalCoffeeGymBadges.FLYING_BADGE.getNameCamelCase();
     }
 
     public boolean isExistFlyingBadge() {
@@ -179,7 +179,7 @@ public class GymBadgeCase implements JsonFile {
     }
 
     private String getRockBadgeCamelCase() {
-        return FractalCoffeeGymBadges.ROCK_TYPE_GYM_BADGE.getNameCamelCase();
+        return FractalCoffeeGymBadges.ROCK_BADGE.getNameCamelCase();
     }
 
     public boolean isExistRockBadge() {

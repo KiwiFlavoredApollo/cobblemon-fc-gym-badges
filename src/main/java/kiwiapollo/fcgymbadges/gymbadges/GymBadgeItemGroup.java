@@ -26,7 +26,7 @@ public class GymBadgeItemGroup {
     }
 
     private Item createItemGroupIcon() {
-        return FractalCoffeeGymBadges.DARK_TYPE_GYM_BADGE.getItem();
+        return FractalCoffeeGymBadges.DARK_BADGE.getItem();
     }
 
     private ItemGroup createItemGroup() {

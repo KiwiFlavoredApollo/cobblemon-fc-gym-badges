@@ -79,6 +79,8 @@ public class GymBadgeCase {
         jsonObject.addProperty(getLeafBadgeCamelCase(), false);
         jsonObject.addProperty(getFlyingBadgeCamelCase(), false);
         jsonObject.addProperty(getRockBadgeCamelCase(), false);
+        jsonObject.addProperty(getElectricBadgeCamelCase(), false);
+        jsonObject.addProperty(getFireBadgeCamelCase(), false);
         return jsonObject;
     }
 

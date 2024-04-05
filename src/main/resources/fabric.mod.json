@@ -3,9 +3,9 @@
 	"id": "fcgymbadges",
 	"version": "${version}",
 	"name": "Cobblemon FC Gym Badges",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Adds gym badges for general use and commands for players with gym leader roles",
 	"authors": [
-		"Me!"
+		"KiwiFlavoredApollo"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",

@@ -5,6 +5,10 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import kiwiapollo.fcgymbadges.commands.darkbadge.ClearDarkBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.darkbadge.GiveDarkBadgeCommand;
+import kiwiapollo.fcgymbadges.commands.electricbadge.ClearElectricBadgeCommand;
+import kiwiapollo.fcgymbadges.commands.electricbadge.GiveElectricBadgeCommand;
+import kiwiapollo.fcgymbadges.commands.firebadge.ClearFireBadgeCommand;
+import kiwiapollo.fcgymbadges.commands.firebadge.GiveFireBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.flyingbadge.ClearFlyingBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.flyingbadge.GiveFlyingBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.leafbadge.ClearLeafBadgeCommand;
@@ -28,6 +32,8 @@ public class GymBadgeCommands {
                 .then(getLeafBadgeCommandBuilder())
                 .then(getFlyingBadgeCommandBuilder())
                 .then(getRockBadgeCommandBuilder())
+                .then(getElectricBadgeCommandBuilder())
+                .then(getFireBadgeCommandBuilder())
         );
     }
 
@@ -132,6 +138,58 @@ public class GymBadgeCommands {
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
                         .executes(new ClearRockBadgeCommand())
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getElectricBadgeCommandBuilder() {
+        return CommandManager.literal("electricbadge")
+                .then(getGiveElectricBadgeCommandBuilder())
+                .then(getClearElectricBadgeCommandBuilder());
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getGiveElectricBadgeCommandBuilder() {
+        return CommandManager.literal("give")
+                .requires(new GiveElectricBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new GiveElectricBadgeCommand())
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getClearElectricBadgeCommandBuilder() {
+        return CommandManager.literal("clear")
+                .requires(new ClearElectricBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new ClearElectricBadgeCommand())
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getFireBadgeCommandBuilder() {
+        return CommandManager.literal("firebadge")
+                .then(getGiveFireBadgeCommandBuilder())
+                .then(getClearFireBadgeCommandBuilder());
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getGiveFireBadgeCommandBuilder() {
+        return CommandManager.literal("give")
+                .requires(new GiveFireBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new GiveFireBadgeCommand())
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getClearFireBadgeCommandBuilder() {
+        return CommandManager.literal("clear")
+                .requires(new ClearFireBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new ClearFireBadgeCommand())
                 );
     }
 }

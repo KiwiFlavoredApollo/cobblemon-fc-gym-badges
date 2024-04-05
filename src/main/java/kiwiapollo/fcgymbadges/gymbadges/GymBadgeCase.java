@@ -187,4 +187,36 @@ public class GymBadgeCase {
     public void removeRockBadge() {
         gymBadges.addProperty(getRockBadgeCamelCase(), false);
     }
+
+    private String getFireBadgeCamelCase() {
+        return FractalCoffeeGymBadges.FIRE_BADGE.getNameCamelCase();
+    }
+
+    public boolean isExistFireBadge() {
+        return gymBadges.get(getFireBadgeCamelCase()).getAsBoolean();
+    }
+
+    public void addFireBadge() {
+        gymBadges.addProperty(getFireBadgeCamelCase(), true);
+    }
+
+    public void removeFireBadge() {
+        gymBadges.addProperty(getFireBadgeCamelCase(), false);
+    }
+
+    private String getElectricBadgeCamelCase() {
+        return FractalCoffeeGymBadges.ELECTRIC_BADGE.getNameCamelCase();
+    }
+
+    public boolean isExistElectricBadge() {
+        return gymBadges.get(getElectricBadgeCamelCase()).getAsBoolean();
+    }
+
+    public void addElectricBadge() {
+        gymBadges.addProperty(getElectricBadgeCamelCase(), true);
+    }
+
+    public void removeElectricBadge() {
+        gymBadges.addProperty(getElectricBadgeCamelCase(), false);
+    }
 }

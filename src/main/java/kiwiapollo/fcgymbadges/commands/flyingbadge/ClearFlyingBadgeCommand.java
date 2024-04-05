@@ -4,7 +4,7 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import kiwiapollo.fcgymbadges.commands.ClearGymBadgeCommand;
 import kiwiapollo.fcgymbadges.exceptions.PlayerGymBadgeNotExistException;
-import kiwiapollo.fcgymbadges.storage.GymBadgeCase;
+import kiwiapollo.fcgymbadges.gymbadges.GymBadgeCase;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 

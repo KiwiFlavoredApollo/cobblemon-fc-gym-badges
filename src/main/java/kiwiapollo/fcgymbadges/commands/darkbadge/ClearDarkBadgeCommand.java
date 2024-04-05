@@ -7,7 +7,6 @@ import kiwiapollo.fcgymbadges.exceptions.PlayerGymBadgeNotExistException;
 import kiwiapollo.fcgymbadges.storage.GymBadgeCase;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 
 public class ClearDarkBadgeCommand extends ClearGymBadgeCommand {
     public ClearDarkBadgeCommand() {

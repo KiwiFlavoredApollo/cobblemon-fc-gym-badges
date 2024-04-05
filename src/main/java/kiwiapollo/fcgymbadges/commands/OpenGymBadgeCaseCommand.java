@@ -18,11 +18,18 @@ public class OpenGymBadgeCaseCommand implements Command<ServerCommandSource> {
     private void printGymBadgeReport(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
         ServerPlayerEntity player = getPlayerArgument(context);
         GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
-        context.getSource().sendMessage(Text.literal(String.format("%s's Gym Badge Case", player.getGameProfile().getName())));
-        context.getSource().sendMessage(Text.literal(String.format("Dark Type Gym Badge: %s", gymBadgeCase.isExistGymBadge("darkTypeGymBadge"))));
-        context.getSource().sendMessage(Text.literal(String.format("Leaf Type Gym Badge: %s", gymBadgeCase.isExistGymBadge("leafTypeGymBadge"))));
-        context.getSource().sendMessage(Text.literal(String.format("Flying Type Gym Badge: %s", gymBadgeCase.isExistGymBadge("flyingTypeGymBadge"))));
-        context.getSource().sendMessage(Text.literal(String.format("Rock Type Gym Badge: %s", gymBadgeCase.isExistGymBadge("rockTypeGymBadge"))));
+
+        context.getSource().sendMessage(
+                Text.literal(String.format("%s's Gym Badge Case", player.getGameProfile().getName())));
+
+        context.getSource().sendMessage(
+                Text.literal(String.format("Dark Badge: %s", gymBadgeCase.isExistDarkBadge())));
+        context.getSource().sendMessage(
+                Text.literal(String.format("Leaf Badge: %s", gymBadgeCase.isExistLeafBadge())));
+        context.getSource().sendMessage(
+                Text.literal(String.format("Flying Badge: %s", gymBadgeCase.isExistFlyingBadge())));
+        context.getSource().sendMessage(
+                Text.literal(String.format("Rock Badge: %s", gymBadgeCase.isExistRockBadge())));
     }
 
     private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)

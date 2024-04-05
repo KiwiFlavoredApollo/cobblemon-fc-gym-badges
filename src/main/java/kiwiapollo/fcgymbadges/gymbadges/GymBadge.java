@@ -7,6 +7,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class GymBadge {
     private final Item item;
     private final Identifier identifier;
@@ -26,7 +29,25 @@ public class GymBadge {
         return item;
     }
 
-    public String getName() {
-        return item.getName().getString();
+    public String getNameSnakeCase() {
+        return identifier.getPath();
+    }
+
+    public String getNameCamelCase() {
+        return snakeToCamel(getNameSnakeCase());
+    }
+
+    private String snakeToCamel(String snakeCase) {
+        Pattern pattern = Pattern.compile("([a-z])_([a-z])");
+        Matcher matcher = pattern.matcher(snakeCase.toLowerCase());
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while(matcher.find()) {
+            matcher.appendReplacement(stringBuilder,
+                    matcher.group(1) + matcher.group(2).toUpperCase());
+        }
+        matcher.appendTail(stringBuilder);
+
+        return stringBuilder.toString();
     }
 }

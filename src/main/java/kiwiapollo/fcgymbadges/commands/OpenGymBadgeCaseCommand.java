@@ -7,6 +7,7 @@ import kiwiapollo.fcgymbadges.gymbadges.GymBadgeCase;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 
 public class OpenGymBadgeCaseCommand implements Command<ServerCommandSource> {
     @Override
@@ -20,7 +21,8 @@ public class OpenGymBadgeCaseCommand implements Command<ServerCommandSource> {
         GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
 
         context.getSource().sendMessage(
-                Text.literal(String.format("%s's Gym Badge Case", player.getGameProfile().getName())));
+                Text.literal(Formatting.YELLOW +
+                        String.format("%s's Gym Badge Case", player.getGameProfile().getName())));
 
         context.getSource().sendMessage(
                 Text.literal(String.format("Dark Badge: %s", gymBadgeCase.isExistDarkBadge())));
@@ -30,6 +32,10 @@ public class OpenGymBadgeCaseCommand implements Command<ServerCommandSource> {
                 Text.literal(String.format("Flying Badge: %s", gymBadgeCase.isExistFlyingBadge())));
         context.getSource().sendMessage(
                 Text.literal(String.format("Rock Badge: %s", gymBadgeCase.isExistRockBadge())));
+        context.getSource().sendMessage(
+                Text.literal(String.format("Electric Badge: %s", gymBadgeCase.isExistElectricBadge())));
+        context.getSource().sendMessage(
+                Text.literal(String.format("Fire Badge: %s", gymBadgeCase.isExistFireBadge())));
     }
 
     private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context) {

@@ -9,6 +9,7 @@ import kiwiapollo.fcgymbadges.commands.flyingbadge.ClearFlyingBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.flyingbadge.GiveFlyingBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.leafbadge.ClearLeafBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.leafbadge.GiveLeafBadgeCommand;
+import kiwiapollo.fcgymbadges.commands.predicates.*;
 import kiwiapollo.fcgymbadges.commands.rockbadge.ClearRockBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.rockbadge.GiveRockBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.suggestion.PlayerArgumentSuggestionProvider;
@@ -38,7 +39,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getGiveDarkBadgeCommandBuilder() {
         return CommandManager.literal("give")
-//                .requires(new GiveDarkBadgeCommandPredicate())
+                .requires(new GiveDarkBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -48,7 +49,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getClearDarkBadgeCommandBuilder() {
         return CommandManager.literal("clear")
-//                .requires(new ClearDarkBadgeCommandPredicate())
+                .requires(new ClearDarkBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -64,7 +65,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getGiveLeafBadgeCommandBuilder() {
         return CommandManager.literal("give")
-//                .requires(new GiveLeafBadgeCommandPredicate())
+                .requires(new GiveLeafBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -74,7 +75,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getClearLeafBadgeCommandBuilder() {
         return CommandManager.literal("clear")
-//                .requires(new ClearLeafBadgeCommandPredicate())
+                .requires(new ClearLeafBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -90,7 +91,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getGiveFlyingBadgeCommandBuilder() {
         return CommandManager.literal("give")
-//                .requires(new GiveFlyingBadgeCommandPredicate())
+                .requires(new GiveFlyingBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -100,7 +101,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getClearFlyingBadgeCommandBuilder() {
         return CommandManager.literal("clear")
-//                .requires(new ClearFlyingBadgeCommandPredicate())
+                .requires(new ClearFlyingBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -116,7 +117,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getGiveRockBadgeCommandBuilder() {
         return CommandManager.literal("give")
-//                .requires(new GiveRockBadgeCommandPredicate())
+                .requires(new GiveRockBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
@@ -126,7 +127,7 @@ public class GymBadgeCommands {
 
     private LiteralArgumentBuilder<ServerCommandSource> getClearRockBadgeCommandBuilder() {
         return CommandManager.literal("clear")
-//                .requires(new ClearRockBadgeCommandPredicate())
+                .requires(new ClearRockBadgeCommandPredicate())
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())

@@ -15,7 +15,7 @@ public class OpenGymBadgeCaseCommand implements Command<ServerCommandSource> {
         return Command.SINGLE_SUCCESS;
     }
 
-    private void printGymBadgeReport(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+    private void printGymBadgeReport(CommandContext<ServerCommandSource> context) {
         ServerPlayerEntity player = getPlayerArgument(context);
         GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
 
@@ -32,9 +32,7 @@ public class OpenGymBadgeCaseCommand implements Command<ServerCommandSource> {
                 Text.literal(String.format("Rock Badge: %s", gymBadgeCase.isExistRockBadge())));
     }
 
-    private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
-            throws CommandSyntaxException {
-
+    private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context) {
         return context.getSource().getPlayer();
     }
 }

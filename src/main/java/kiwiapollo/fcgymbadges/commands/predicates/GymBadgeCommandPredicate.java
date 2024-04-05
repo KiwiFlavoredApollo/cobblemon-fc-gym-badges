@@ -1,7 +1,7 @@
 package kiwiapollo.fcgymbadges.commands.predicates;
 
 import kiwiapollo.fcgymbadges.exceptions.LuckPermsNotLoadedException;
-import kiwiapollo.fcgymbadges.exceptions.PlayerNotExistException;
+import kiwiapollo.fcgymbadges.exceptions.NotExecutedByPlayerException;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.node.types.PermissionNode;
 import net.minecraft.server.command.ServerCommandSource;
@@ -20,26 +20,26 @@ public abstract class GymBadgeCommandPredicate implements Predicate<ServerComman
     @Override
     public boolean test(ServerCommandSource source) {
         try {
-            assertExistPlayer(source);
-            assertExistLuckPerms();
+            assertExecutedByPlayer(source);
+            assertLoadedLuckPerms();
             return isExistLuckPermPermission(source);
-        } catch (PlayerNotExistException e) {
+        } catch (NotExecutedByPlayerException e) {
             return true;
         } catch (LuckPermsNotLoadedException e) {
             return isExistOpPermission(source);
         }
     }
 
-    private void assertExistPlayer(ServerCommandSource source) throws PlayerNotExistException {
-        if (source.getPlayer() == null) {
-            throw new PlayerNotExistException();
+    private void assertExecutedByPlayer(ServerCommandSource source) throws NotExecutedByPlayerException {
+        if (!source.isExecutedByPlayer()) {
+            throw new NotExecutedByPlayerException();
         }
     }
 
-    private void assertExistLuckPerms() throws LuckPermsNotLoadedException {
+    private void assertLoadedLuckPerms() throws LuckPermsNotLoadedException {
         try {
-            LuckPermsProvider.get();
-        } catch (IllegalStateException e) {
+            Class.forName("net.luckperms.api");
+        } catch (ClassNotFoundException e) {
             throw new LuckPermsNotLoadedException();
         }
     }

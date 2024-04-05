@@ -1,4 +1,4 @@
-package kiwiapollo.fcgymbadges.storage;
+package kiwiapollo.fcgymbadges.gymbadges;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -14,16 +14,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-public class GymBadgeCase implements JsonFile {
+public class GymBadgeCase {
     private final UUID uuid;
-    private JsonObject gymBadges;
+    private final JsonObject gymBadges;
 
-    @Override
-    public void load() {
-        this.gymBadges = loadGymBadgesJsonObject();
-    }
-
-    @Override
     public void save() {
         saveGymBadgesJsonObject();
     }

@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-public class GymBadgeCase {
+public class GymBadgeProgress {
     private final UUID uuid;
     private final JsonObject gymBadges;
 
@@ -22,7 +22,7 @@ public class GymBadgeCase {
         saveGymBadgesJsonObject();
     }
 
-    public GymBadgeCase(ServerPlayerEntity player) {
+    public GymBadgeProgress(ServerPlayerEntity player) {
         this.uuid = player.getUuid();
         this.gymBadges = loadGymBadgesJsonObject();
     }
@@ -43,7 +43,7 @@ public class GymBadgeCase {
             return jsonObject;
         } catch (LegacyJsonFileException e) {
             FractalCoffeeGymBadges.LOGGER.debug("Loaded gym badges from legacy json file");
-            return readFromLegacy(e.getJsonObject());
+            return legacyToCurrent(e.getJsonObject());
         } catch (FileNotFoundException e) {
             throw new JsonFileReadErrorException("Failed to read json file");
         }
@@ -58,7 +58,7 @@ public class GymBadgeCase {
         }
     }
 
-    private JsonObject readFromLegacy(JsonObject jsonObject) {
+    private JsonObject legacyToCurrent(JsonObject jsonObject) {
         JsonObject newJsonObject = new JsonObject();
         newJsonObject.addProperty(
                 FractalCoffeeGymBadges.DARK_BADGE.getNameCamelCase(),

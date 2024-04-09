@@ -16,7 +16,7 @@ public class GymBadgeCommands {
     public void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess,
                          CommandManager.RegistrationEnvironment environment) {
         dispatcher.register(CommandManager.literal("fcgymbadges")
-                .executes(new OpenGymBadgeCaseCommand())
+                .executes(new PrintGymBadgeProgressCommand())
                 .then(getDarkBadgeCommandBuilder())
                 .then(getLeafBadgeCommandBuilder())
                 .then(getFlyingBadgeCommandBuilder())

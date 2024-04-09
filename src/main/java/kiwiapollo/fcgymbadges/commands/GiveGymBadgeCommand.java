@@ -3,10 +3,9 @@ package kiwiapollo.fcgymbadges.commands;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.exceptions.PlayerGymBadgeExistException;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
-import kiwiapollo.fcgymbadges.gymbadges.GymBadgeCase;
+import kiwiapollo.fcgymbadges.gymbadges.GymBadgeProgress;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -37,18 +36,18 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
             throws CommandSyntaxException {
 
         ServerPlayerEntity player = getPlayerArgument(context);
-        GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
-        gymBadgeCase.addGymBadge(gymBadge);
-        gymBadgeCase.save();
+        GymBadgeProgress gymBadgeProgress = new GymBadgeProgress(player);
+        gymBadgeProgress.addGymBadge(gymBadge);
+        gymBadgeProgress.save();
     }
 
     private void assertNotExistPlayerBadge(CommandContext<ServerCommandSource> context)
             throws PlayerGymBadgeExistException, CommandSyntaxException {
 
         ServerPlayerEntity player = getPlayerArgument(context);
-        GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
+        GymBadgeProgress gymBadgeProgress = new GymBadgeProgress(player);
 
-        if(gymBadgeCase.isExistGymBadge(gymBadge)) {
+        if(gymBadgeProgress.isExistGymBadge(gymBadge)) {
             throw(new PlayerGymBadgeExistException());
         }
     }

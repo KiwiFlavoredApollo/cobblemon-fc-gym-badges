@@ -60,10 +60,18 @@ public class GymBadgeCase {
 
     private JsonObject readFromLegacy(JsonObject jsonObject) {
         JsonObject newJsonObject = new JsonObject();
-        newJsonObject.addProperty(getDarkBadgeCamelCase(), jsonObject.get("darkTypeGymBadge").getAsBoolean());
-        newJsonObject.addProperty(getLeafBadgeCamelCase(), jsonObject.get("leafTypeGymBadge").getAsBoolean());
-        newJsonObject.addProperty(getFlyingBadgeCamelCase(), jsonObject.get("flyingTypeGymBadge").getAsBoolean());
-        newJsonObject.addProperty(getRockBadgeCamelCase(), jsonObject.get("rockTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(
+                FractalCoffeeGymBadges.DARK_BADGE.getNameCamelCase(),
+                jsonObject.get("darkTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(
+                FractalCoffeeGymBadges.LEAF_BADGE.getNameCamelCase(),
+                jsonObject.get("leafTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(
+                FractalCoffeeGymBadges.FLYING_BADGE.getNameCamelCase(),
+                jsonObject.get("flyingTypeGymBadge").getAsBoolean());
+        newJsonObject.addProperty(
+                FractalCoffeeGymBadges.ROCK_BADGE.getNameCamelCase(),
+                jsonObject.get("rockTypeGymBadge").getAsBoolean());
         return newJsonObject;
     }
 
@@ -75,12 +83,12 @@ public class GymBadgeCase {
 
     private JsonObject loadGymBadgesFromDefault() {
         JsonObject jsonObject =  new JsonObject();
-        jsonObject.addProperty(getDarkBadgeCamelCase(), false);
-        jsonObject.addProperty(getLeafBadgeCamelCase(), false);
-        jsonObject.addProperty(getFlyingBadgeCamelCase(), false);
-        jsonObject.addProperty(getRockBadgeCamelCase(), false);
-        jsonObject.addProperty(getElectricBadgeCamelCase(), false);
-        jsonObject.addProperty(getFireBadgeCamelCase(), false);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.DARK_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.LEAF_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.FLYING_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ROCK_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ELECTRIC_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.FIRE_BADGE);
         return jsonObject;
     }
 
@@ -126,99 +134,26 @@ public class GymBadgeCase {
         return Paths.get(config, FractalCoffeeGymBadges.NAMESPACE, getFileName()).toString();
     }
 
-    private String getDarkBadgeCamelCase() {
-        return FractalCoffeeGymBadges.DARK_BADGE.getNameCamelCase();
+    public boolean isExistGymBadge(GymBadge gymBadge) {
+        String name = gymBadge.getNameCamelCase();
+        return gymBadges.get(name).getAsBoolean();
     }
 
-    public boolean isExistDarkBadge() {
-        return gymBadges.get(getDarkBadgeCamelCase()).getAsBoolean();
+    public void addGymBadge(GymBadge gymBadge) {
+        setTrueGymBadgeProperty(gymBadges, gymBadge);
     }
 
-    public void addDarkBadge() {
-        gymBadges.addProperty(getDarkBadgeCamelCase(), true);
+    public void removeGymBadge(GymBadge gymBadge) {
+        setFalseGymBadgeProperty(gymBadges, gymBadge);
     }
 
-    public void removeDarkBadge() {
-        gymBadges.addProperty(getDarkBadgeCamelCase(), false);
+    private void setTrueGymBadgeProperty(JsonObject jsonObject, GymBadge gymBadge) {
+        String name = gymBadge.getNameCamelCase();
+        jsonObject.addProperty(name, true);
     }
 
-    private String getLeafBadgeCamelCase() {
-        return FractalCoffeeGymBadges.LEAF_BADGE.getNameCamelCase();
-    }
-
-    public boolean isExistLeafBadge() {
-        return gymBadges.get(getLeafBadgeCamelCase()).getAsBoolean();
-    }
-
-    public void addLeafBadge() {
-        gymBadges.addProperty(getLeafBadgeCamelCase(), true);
-    }
-
-    public void removeLeafBadge() {
-        gymBadges.addProperty(getLeafBadgeCamelCase(), false);
-    }
-
-    private String getFlyingBadgeCamelCase() {
-        return FractalCoffeeGymBadges.FLYING_BADGE.getNameCamelCase();
-    }
-
-    public boolean isExistFlyingBadge() {
-        return gymBadges.get(getFlyingBadgeCamelCase()).getAsBoolean();
-    }
-
-    public void addFlyingBadge() {
-        gymBadges.addProperty(getFlyingBadgeCamelCase(), true);
-    }
-
-    public void removeFlyingBadge() {
-        gymBadges.addProperty(getFlyingBadgeCamelCase(), false);
-    }
-
-    private String getRockBadgeCamelCase() {
-        return FractalCoffeeGymBadges.ROCK_BADGE.getNameCamelCase();
-    }
-
-    public boolean isExistRockBadge() {
-        return gymBadges.get(getRockBadgeCamelCase()).getAsBoolean();
-    }
-
-    public void addRockBadge() {
-        gymBadges.addProperty(getRockBadgeCamelCase(), true);
-    }
-
-    public void removeRockBadge() {
-        gymBadges.addProperty(getRockBadgeCamelCase(), false);
-    }
-
-    private String getFireBadgeCamelCase() {
-        return FractalCoffeeGymBadges.FIRE_BADGE.getNameCamelCase();
-    }
-
-    public boolean isExistFireBadge() {
-        return gymBadges.get(getFireBadgeCamelCase()).getAsBoolean();
-    }
-
-    public void addFireBadge() {
-        gymBadges.addProperty(getFireBadgeCamelCase(), true);
-    }
-
-    public void removeFireBadge() {
-        gymBadges.addProperty(getFireBadgeCamelCase(), false);
-    }
-
-    private String getElectricBadgeCamelCase() {
-        return FractalCoffeeGymBadges.ELECTRIC_BADGE.getNameCamelCase();
-    }
-
-    public boolean isExistElectricBadge() {
-        return gymBadges.get(getElectricBadgeCamelCase()).getAsBoolean();
-    }
-
-    public void addElectricBadge() {
-        gymBadges.addProperty(getElectricBadgeCamelCase(), true);
-    }
-
-    public void removeElectricBadge() {
-        gymBadges.addProperty(getElectricBadgeCamelCase(), false);
+    private void setFalseGymBadgeProperty(JsonObject jsonObject, GymBadge gymBadge) {
+        String name = gymBadge.getNameCamelCase();
+        jsonObject.addProperty(name, false);
     }
 }

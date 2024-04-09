@@ -3,19 +3,8 @@ package kiwiapollo.fcgymbadges.commands;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import kiwiapollo.fcgymbadges.commands.darkbadge.ClearDarkBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.darkbadge.GiveDarkBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.electricbadge.ClearElectricBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.electricbadge.GiveElectricBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.firebadge.ClearFireBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.firebadge.GiveFireBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.flyingbadge.ClearFlyingBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.flyingbadge.GiveFlyingBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.leafbadge.ClearLeafBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.leafbadge.GiveLeafBadgeCommand;
+import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.commands.predicates.*;
-import kiwiapollo.fcgymbadges.commands.rockbadge.ClearRockBadgeCommand;
-import kiwiapollo.fcgymbadges.commands.rockbadge.GiveRockBadgeCommand;
 import kiwiapollo.fcgymbadges.commands.suggestion.PlayerArgumentSuggestionProvider;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.EntitySelector;
@@ -49,7 +38,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveDarkBadgeCommand())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.DARK_BADGE))
                 );
     }
 
@@ -59,7 +48,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearDarkBadgeCommand())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.DARK_BADGE))
                 );
     }
 
@@ -75,7 +64,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveLeafBadgeCommand())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.LEAF_BADGE))
                 );
     }
 
@@ -85,7 +74,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                         "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearLeafBadgeCommand())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.LEAF_BADGE))
                 );
     }
 
@@ -101,7 +90,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveFlyingBadgeCommand())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.FLYING_BADGE))
                 );
     }
 
@@ -111,7 +100,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearFlyingBadgeCommand())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.FLYING_BADGE))
                 );
     }
 
@@ -127,7 +116,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveRockBadgeCommand())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.ROCK_BADGE))
                 );
     }
 
@@ -137,7 +126,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearRockBadgeCommand())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.ROCK_BADGE))
                 );
     }
 
@@ -153,7 +142,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveElectricBadgeCommand())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.ELECTRIC_BADGE))
                 );
     }
 
@@ -163,7 +152,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearElectricBadgeCommand())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.ELECTRIC_BADGE))
                 );
     }
 
@@ -179,7 +168,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveFireBadgeCommand())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.FIRE_BADGE))
                 );
     }
 
@@ -189,7 +178,7 @@ public class GymBadgeCommands {
                 .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearFireBadgeCommand())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.FIRE_BADGE))
                 );
     }
 }

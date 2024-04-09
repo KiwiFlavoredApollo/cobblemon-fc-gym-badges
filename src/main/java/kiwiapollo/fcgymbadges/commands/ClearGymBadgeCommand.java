@@ -4,16 +4,18 @@ import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import kiwiapollo.fcgymbadges.exceptions.PlayerGymBadgeNotExistException;
+import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
+import kiwiapollo.fcgymbadges.gymbadges.GymBadgeCase;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 
-public abstract class ClearGymBadgeCommand implements Command<ServerCommandSource> {
-    private final String gymBadgeName;
+public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
+    private final GymBadge gymBadge;
 
-    public ClearGymBadgeCommand(String gymBadgeName) {
-        this.gymBadgeName = gymBadgeName;
+    public ClearGymBadgeCommand(GymBadge gymBadge) {
+        this.gymBadge = gymBadge;
     }
 
     @Override
@@ -30,23 +32,37 @@ public abstract class ClearGymBadgeCommand implements Command<ServerCommandSourc
         }
     }
 
-    protected abstract void assertExistPlayerGymBadge(CommandContext<ServerCommandSource> context)
-            throws PlayerGymBadgeNotExistException, CommandSyntaxException;
+    protected void assertExistPlayerGymBadge(CommandContext<ServerCommandSource> context)
+            throws PlayerGymBadgeNotExistException, CommandSyntaxException {
 
-    protected abstract void clearPlayerGymBadge(CommandContext<ServerCommandSource> context)
-            throws CommandSyntaxException;
+        ServerPlayerEntity player = getPlayerArgument(context);
+        GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
+
+        if(!gymBadgeCase.isExistGymBadge(gymBadge)) {
+            throw(new PlayerGymBadgeNotExistException());
+        }
+    }
+
+    protected void clearPlayerGymBadge(CommandContext<ServerCommandSource> context)
+            throws CommandSyntaxException {
+
+        ServerPlayerEntity player = getPlayerArgument(context);
+        GymBadgeCase gymBadgeCase = new GymBadgeCase(player);
+        gymBadgeCase.removeGymBadge(gymBadge);
+        gymBadgeCase.save();
+    }
 
     private void sendClearPlayerGymBadgeSuccessMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
         ServerPlayerEntity player = getPlayerArgument(context);
-        String message = getSuccessMessage(player.getGameProfile().getName(), gymBadgeName);
+        String message = getSuccessMessage(player.getGameProfile().getName(), gymBadge.getDisplayName());
         context.getSource().sendMessage(Text.literal(message));
     }
 
     private void sendClearPlayerGymBadgeErrorMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
         ServerPlayerEntity player = getPlayerArgument(context);
-        String message = getErrorMessage(player.getGameProfile().getName(), gymBadgeName);
+        String message = getErrorMessage(player.getGameProfile().getName(), gymBadge.getDisplayName());
         context.getSource().sendError(Text.literal(message));
     }
 
@@ -54,7 +70,7 @@ public abstract class ClearGymBadgeCommand implements Command<ServerCommandSourc
             throws CommandSyntaxException {
         ServerPlayerEntity player = getPlayerArgument(context);
         String message = getPlayerGymBadgeNotExistMessage(
-                player.getGameProfile().getName(), gymBadgeName);
+                player.getGameProfile().getName(), gymBadge.getDisplayName());
         context.getSource().sendError(Text.literal(message));
     }
 

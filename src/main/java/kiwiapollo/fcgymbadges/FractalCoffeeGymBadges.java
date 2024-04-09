@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import kiwiapollo.fcgymbadges.commands.GymBadgeCommands;
 import kiwiapollo.fcgymbadges.gymbadges.*;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.slf4j.Logger;
 
 public class FractalCoffeeGymBadges implements ModInitializer {
@@ -21,20 +20,25 @@ public class FractalCoffeeGymBadges implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        addGymBadgesToItemGroup();
+        registerGymBadges();
+        registerGymBadgeItemGroup();
         registerCommands();
     }
 
-    private void addGymBadgesToItemGroup() {
-        GYM_BADGE_ITEM_GROUP.addGymBadge(DARK_BADGE);
-        GYM_BADGE_ITEM_GROUP.addGymBadge(LEAF_BADGE);
-        GYM_BADGE_ITEM_GROUP.addGymBadge(FLYING_BADGE);
-        GYM_BADGE_ITEM_GROUP.addGymBadge(ROCK_BADGE);
-        GYM_BADGE_ITEM_GROUP.addGymBadge(ELECTRIC_BADGE);
-        GYM_BADGE_ITEM_GROUP.addGymBadge(FIRE_BADGE);
+    private void registerGymBadges() {
+        DARK_BADGE.register();
+        LEAF_BADGE.register();
+        FLYING_BADGE.register();
+        ROCK_BADGE.register();
+        ELECTRIC_BADGE.register();
+        FIRE_BADGE.register();
+    }
+
+    private void registerGymBadgeItemGroup() {
+        GYM_BADGE_ITEM_GROUP.register();
     }
 
     private void registerCommands() {
-        CommandRegistrationCallback.EVENT.register(GYM_BADGE_COMMANDS::register);
+        GYM_BADGE_COMMANDS.register();
     }
 }

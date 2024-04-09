@@ -2,13 +2,11 @@ package kiwiapollo.fcgymbadges.gymbadges;
 
 import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -21,8 +19,6 @@ public class GymBadgeItemGroup {
         itemGroupIcon = createItemGroupIcon();
         itemGroup = createItemGroup();
         identifier = createIdentifier();
-
-        registerItemGroup();
     }
 
     private Item createItemGroupIcon() {
@@ -32,6 +28,14 @@ public class GymBadgeItemGroup {
     private ItemGroup createItemGroup() {
         return FabricItemGroup.builder()
                 .icon(() -> new ItemStack(itemGroupIcon))
+                .entries((context, entries) -> {
+                    entries.add(FractalCoffeeGymBadges.DARK_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.LEAF_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.FLYING_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.ROCK_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.ELECTRIC_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.FIRE_BADGE.getItem());
+                })
                 .displayName(Text.translatable("Cobblemon FC Gym Badges"))
                 .build();
     }
@@ -40,14 +44,7 @@ public class GymBadgeItemGroup {
         return new Identifier(FractalCoffeeGymBadges.NAMESPACE, "item_group");
     }
 
-    private void registerItemGroup() {
+    public void register() {
         Registry.register(Registries.ITEM_GROUP, identifier, itemGroup);
-    }
-
-    public void addGymBadge(GymBadge gymBadge) {
-        var groupRegistryKey = RegistryKey.of(Registries.ITEM_GROUP.getKey(), identifier);
-        ItemGroupEvents.modifyEntriesEvent(groupRegistryKey).register(itemGroup -> {
-            itemGroup.add(gymBadge.getItem());
-        });
     }
 }

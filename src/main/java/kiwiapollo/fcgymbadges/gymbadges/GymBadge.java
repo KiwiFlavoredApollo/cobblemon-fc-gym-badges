@@ -17,12 +17,6 @@ public class GymBadge {
     public GymBadge(String itemName) {
         this.item = new Item(new FabricItemSettings());
         this.identifier = new Identifier(FractalCoffeeGymBadges.NAMESPACE, itemName);
-
-        registerItem();
-    }
-
-    private void registerItem() {
-        Registry.register(Registries.ITEM, identifier, item);
     }
 
     public Item getItem() {
@@ -69,5 +63,9 @@ public class GymBadge {
         matcher.appendTail(stringBuilder);
 
         return stringBuilder.toString();
+    }
+
+    public void register() {
+        Registry.register(Registries.ITEM, identifier, item);
     }
 }

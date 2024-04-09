@@ -6,6 +6,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.commands.predicates.*;
 import kiwiapollo.fcgymbadges.commands.suggestion.PlayerArgumentSuggestionProvider;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.EntitySelector;
 import net.minecraft.command.argument.EntityArgumentType;
@@ -13,17 +14,17 @@ import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 
 public class GymBadgeCommands {
-    public void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registryAccess,
-                         CommandManager.RegistrationEnvironment environment) {
-        dispatcher.register(CommandManager.literal("fcgymbadges")
-                .executes(new PrintGymBadgeProgressCommand())
-                .then(getDarkBadgeCommandBuilder())
-                .then(getLeafBadgeCommandBuilder())
-                .then(getFlyingBadgeCommandBuilder())
-                .then(getRockBadgeCommandBuilder())
-                .then(getElectricBadgeCommandBuilder())
-                .then(getFireBadgeCommandBuilder())
-        );
+    public void register() {
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
+                dispatcher.register(CommandManager.literal("fcgymbadges")
+                        .executes(new PrintGymBadgeProgressCommand())
+                        .then(getDarkBadgeCommandBuilder())
+                        .then(getLeafBadgeCommandBuilder())
+                        .then(getFlyingBadgeCommandBuilder())
+                        .then(getRockBadgeCommandBuilder())
+                        .then(getElectricBadgeCommandBuilder())
+                        .then(getFireBadgeCommandBuilder())
+        ));
     }
 
     private LiteralArgumentBuilder<ServerCommandSource> getDarkBadgeCommandBuilder() {

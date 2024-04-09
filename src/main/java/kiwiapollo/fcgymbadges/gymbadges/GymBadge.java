@@ -50,4 +50,24 @@ public class GymBadge {
 
         return stringBuilder.toString();
     }
+
+    public String getDisplayName() {
+        return snakeToDisplay(getNameSnakeCase());
+    }
+
+    private String snakeToDisplay(String snakeCase) {
+        String underscoreToWhitespace = snakeCase.replaceAll("_", " ");
+
+        Pattern pattern = Pattern.compile("(^|\\s)([a-z])");
+        Matcher matcher = pattern.matcher(underscoreToWhitespace.toLowerCase());
+
+        StringBuilder stringBuilder = new StringBuilder();
+        while(matcher.find()) {
+            matcher.appendReplacement(stringBuilder,
+                    matcher.group(1) + matcher.group(2).toUpperCase());
+        }
+        matcher.appendTail(stringBuilder);
+
+        return stringBuilder.toString();
+    }
 }

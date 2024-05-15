@@ -14,6 +14,8 @@ public class FractalCoffeeGymBadges implements ModInitializer {
     public static final GymBadge ROCK_BADGE = new RockBadge();
     public static final GymBadge ELECTRIC_BADGE = new ElectricBadge();
     public static final GymBadge FIRE_BADGE = new FireBadge();
+    public static final GymBadge ICE_BADGE = new IceBadge();
+    public static final GymBadge WATER_BADGE = new WaterBadge();
     public static final GymBadgeItemGroup GYM_BADGE_ITEM_GROUP = new GymBadgeItemGroup();
     public static final GymBadgeCommands GYM_BADGE_COMMANDS = new GymBadgeCommands();
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -32,6 +34,8 @@ public class FractalCoffeeGymBadges implements ModInitializer {
         ROCK_BADGE.register();
         ELECTRIC_BADGE.register();
         FIRE_BADGE.register();
+        ICE_BADGE.register();
+        WATER_BADGE.register();
     }
 
     private void registerGymBadgeItemGroup() {

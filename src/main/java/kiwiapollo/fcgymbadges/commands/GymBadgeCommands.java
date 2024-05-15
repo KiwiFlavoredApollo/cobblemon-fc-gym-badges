@@ -24,6 +24,8 @@ public class GymBadgeCommands {
                         .then(getRockBadgeCommandBuilder())
                         .then(getElectricBadgeCommandBuilder())
                         .then(getFireBadgeCommandBuilder())
+                        .then(getIceBadgeCommandBuilder())
+                        .then(getWaterBadgeCommandBuilder())
         ));
     }
 
@@ -180,6 +182,58 @@ public class GymBadgeCommands {
                                 "player", EntityArgumentType.player())
                         .suggests(new PlayerArgumentSuggestionProvider())
                         .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.FIRE_BADGE))
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getIceBadgeCommandBuilder() {
+        return CommandManager.literal("icebadge")
+                .then(getGiveIceBadgeCommandBuilder())
+                .then(getClearIceBadgeCommandBuilder());
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getGiveIceBadgeCommandBuilder() {
+        return CommandManager.literal("give")
+                .requires(new GiveIceBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.ICE_BADGE))
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getClearIceBadgeCommandBuilder() {
+        return CommandManager.literal("clear")
+                .requires(new ClearIceBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.ICE_BADGE))
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getWaterBadgeCommandBuilder() {
+        return CommandManager.literal("waterbadge")
+                .then(getGiveWaterBadgeCommandBuilder())
+                .then(getClearWaterBadgeCommandBuilder());
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getGiveWaterBadgeCommandBuilder() {
+        return CommandManager.literal("give")
+                .requires(new GiveWaterBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new GiveGymBadgeCommand(FractalCoffeeGymBadges.WATER_BADGE))
+                );
+    }
+
+    private LiteralArgumentBuilder<ServerCommandSource> getClearWaterBadgeCommandBuilder() {
+        return CommandManager.literal("clear")
+                .requires(new ClearWaterBadgeCommandPredicate())
+                .then(RequiredArgumentBuilder.<ServerCommandSource, EntitySelector>argument(
+                                "player", EntityArgumentType.player())
+                        .suggests(new PlayerArgumentSuggestionProvider())
+                        .executes(new ClearGymBadgeCommand(FractalCoffeeGymBadges.WATER_BADGE))
                 );
     }
 }

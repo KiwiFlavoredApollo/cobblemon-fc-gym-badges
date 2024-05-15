@@ -89,6 +89,8 @@ public class GymBadgeProgress {
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ROCK_BADGE);
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ELECTRIC_BADGE);
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.FIRE_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ICE_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.WATER_BADGE);
         return jsonObject;
     }
 

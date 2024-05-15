@@ -27,6 +27,8 @@ public class PrintGymBadgeProgressCommand implements Command<ServerCommandSource
         printGymBadgeExistence(context, FractalCoffeeGymBadges.ROCK_BADGE);
         printGymBadgeExistence(context, FractalCoffeeGymBadges.ELECTRIC_BADGE);
         printGymBadgeExistence(context, FractalCoffeeGymBadges.FIRE_BADGE);
+        printGymBadgeExistence(context, FractalCoffeeGymBadges.ICE_BADGE);
+        printGymBadgeExistence(context, FractalCoffeeGymBadges.WATER_BADGE);
     }
 
     private ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context) {

@@ -6,6 +6,7 @@ import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.exceptions.JsonFileReadErrorException;
 import kiwiapollo.fcgymbadges.exceptions.JsonFileWriteErrorException;
 import kiwiapollo.fcgymbadges.exceptions.LegacyJsonFileException;
+import kiwiapollo.fcgymbadges.utilities.CaseConverter;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 import java.io.*;
@@ -61,16 +62,16 @@ public class GymBadgeProgress {
     private JsonObject legacyToCurrent(JsonObject jsonObject) {
         JsonObject newJsonObject = new JsonObject();
         newJsonObject.addProperty(
-                FractalCoffeeGymBadges.DARK_BADGE.getNameCamelCase(),
+                CaseConverter.snakeToCamel(FractalCoffeeGymBadges.DARK_BADGE.getName()),
                 jsonObject.get("darkTypeGymBadge").getAsBoolean());
         newJsonObject.addProperty(
-                FractalCoffeeGymBadges.LEAF_BADGE.getNameCamelCase(),
+                CaseConverter.snakeToCamel(FractalCoffeeGymBadges.LEAF_BADGE.getName()),
                 jsonObject.get("leafTypeGymBadge").getAsBoolean());
         newJsonObject.addProperty(
-                FractalCoffeeGymBadges.FLYING_BADGE.getNameCamelCase(),
+                CaseConverter.snakeToCamel(FractalCoffeeGymBadges.FLYING_BADGE.getName()),
                 jsonObject.get("flyingTypeGymBadge").getAsBoolean());
         newJsonObject.addProperty(
-                FractalCoffeeGymBadges.ROCK_BADGE.getNameCamelCase(),
+                CaseConverter.snakeToCamel(FractalCoffeeGymBadges.ROCK_BADGE.getName()),
                 jsonObject.get("rockTypeGymBadge").getAsBoolean());
         return newJsonObject;
     }
@@ -91,6 +92,7 @@ public class GymBadgeProgress {
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.FIRE_BADGE);
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ICE_BADGE);
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.WATER_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.DRAGON_BADGE);
         return jsonObject;
     }
 
@@ -137,7 +139,7 @@ public class GymBadgeProgress {
     }
 
     public boolean isExistGymBadge(GymBadge gymBadge) {
-        String name = gymBadge.getNameCamelCase();
+        String name = CaseConverter.snakeToCamel(gymBadge.getName());
         return gymBadges.get(name).getAsBoolean();
     }
 
@@ -150,12 +152,12 @@ public class GymBadgeProgress {
     }
 
     private void setTrueGymBadgeProperty(JsonObject jsonObject, GymBadge gymBadge) {
-        String name = gymBadge.getNameCamelCase();
+        String name = CaseConverter.snakeToCamel(gymBadge.getName());
         jsonObject.addProperty(name, true);
     }
 
     private void setFalseGymBadgeProperty(JsonObject jsonObject, GymBadge gymBadge) {
-        String name = gymBadge.getNameCamelCase();
+        String name = CaseConverter.snakeToCamel(gymBadge.getName());
         jsonObject.addProperty(name, false);
     }
 }

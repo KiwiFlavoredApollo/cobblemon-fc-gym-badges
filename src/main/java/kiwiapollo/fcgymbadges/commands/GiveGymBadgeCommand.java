@@ -26,6 +26,7 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
             giveGymBadgeToPlayer(context);
             sendGiveGymBadgeSuccessfulMessage(context);
             return Command.SINGLE_SUCCESS;
+            
         } catch (PlayerGymBadgeExistException e) {
             sendGiveGymBadgeErrorMessage(context);
             sendPlayerGymBadgeExistMessage(context);

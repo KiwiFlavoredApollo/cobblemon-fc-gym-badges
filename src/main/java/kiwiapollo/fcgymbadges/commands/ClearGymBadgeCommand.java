@@ -26,6 +26,7 @@ public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
             clearPlayerGymBadge(context);
             sendClearPlayerGymBadgeSuccessMessage(context);
             return Command.SINGLE_SUCCESS;
+
         } catch (PlayerGymBadgeNotExistException e) {
             sendClearPlayerGymBadgeErrorMessage(context);
             sendPlayerGymBadgeNotExistMessage(context);
@@ -55,6 +56,7 @@ public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
 
     private void sendClearPlayerGymBadgeSuccessMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         ServerPlayerEntity player = getPlayerArgument(context);
         String message = getSuccessMessage(player.getGameProfile().getName(),
                 CaseConverter.snakeToDisplay(gymBadge.getName()));
@@ -63,6 +65,7 @@ public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
 
     private void sendClearPlayerGymBadgeErrorMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         ServerPlayerEntity player = getPlayerArgument(context);
         String message = getErrorMessage(player.getGameProfile().getName(),
                 CaseConverter.snakeToDisplay(gymBadge.getName()));
@@ -71,6 +74,7 @@ public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
 
     private void sendPlayerGymBadgeNotExistMessage(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         ServerPlayerEntity player = getPlayerArgument(context);
         String message = getPlayerGymBadgeNotExistMessage(
                 player.getGameProfile().getName(), CaseConverter.snakeToDisplay(gymBadge.getName()));
@@ -79,6 +83,7 @@ public class ClearGymBadgeCommand implements Command<ServerCommandSource> {
 
     protected ServerPlayerEntity getPlayerArgument(CommandContext<ServerCommandSource> context)
             throws CommandSyntaxException {
+
         return EntityArgumentType.getPlayer(context, "player");
     }
 

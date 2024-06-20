@@ -1,7 +1,7 @@
 package kiwiapollo.fcgymbadges;
 
 import com.mojang.logging.LogUtils;
-import kiwiapollo.fcgymbadges.commands.GymBadgeCommands;
+import kiwiapollo.fcgymbadges.commands.GymBadgeCommandGroup;
 import kiwiapollo.fcgymbadges.gymbadges.*;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -16,8 +16,9 @@ public class FractalCoffeeGymBadges implements ModInitializer {
     public static final GymBadge FIRE_BADGE = new FireBadge();
     public static final GymBadge ICE_BADGE = new IceBadge();
     public static final GymBadge WATER_BADGE = new WaterBadge();
+    public static final GymBadge DRAGON_BADGE = new DragonBadge();
     public static final GymBadgeItemGroup GYM_BADGE_ITEM_GROUP = new GymBadgeItemGroup();
-    public static final GymBadgeCommands GYM_BADGE_COMMANDS = new GymBadgeCommands();
+    public static final GymBadgeCommandGroup GYM_BADGE_COMMAND_GROUP = new GymBadgeCommandGroup();
     public static final Logger LOGGER = LogUtils.getLogger();
 
     @Override
@@ -36,6 +37,7 @@ public class FractalCoffeeGymBadges implements ModInitializer {
         FIRE_BADGE.register();
         ICE_BADGE.register();
         WATER_BADGE.register();
+        DRAGON_BADGE.register();
     }
 
     private void registerGymBadgeItemGroup() {
@@ -43,6 +45,6 @@ public class FractalCoffeeGymBadges implements ModInitializer {
     }
 
     private void registerCommands() {
-        GYM_BADGE_COMMANDS.register();
+        GYM_BADGE_COMMAND_GROUP.register();
     }
 }

@@ -6,6 +6,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import kiwiapollo.fcgymbadges.exceptions.PlayerGymBadgeExistException;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadgeProgress;
+import kiwiapollo.fcgymbadges.utilities.CaseConverter;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -56,7 +57,8 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
             throws CommandSyntaxException {
 
         ServerPlayerEntity player = getPlayerArgument(context);
-        String message = getSuccessMessage(player.getGameProfile().getName(), gymBadge.getDisplayName());
+        String message = getSuccessMessage(player.getGameProfile().getName(),
+                CaseConverter.snakeToDisplay(gymBadge.getName()));
         context.getSource().sendMessage(Text.literal(message));
     }
 
@@ -64,7 +66,8 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
             throws CommandSyntaxException {
 
         ServerPlayerEntity player = getPlayerArgument(context);
-        String message = getErrorMessage(player.getGameProfile().getName(), gymBadge.getDisplayName());
+        String message = getErrorMessage(player.getGameProfile().getName(),
+                CaseConverter.snakeToDisplay(gymBadge.getName()));
         context.getSource().sendError(Text.literal(message));
     }
 
@@ -73,7 +76,7 @@ public class GiveGymBadgeCommand implements Command<ServerCommandSource> {
 
         ServerPlayerEntity player = getPlayerArgument(context);
         String message = getPlayerGymBadgeExistMessage(
-                player.getGameProfile().getName(), gymBadge.getDisplayName());
+                player.getGameProfile().getName(), CaseConverter.snakeToDisplay(gymBadge.getName()));
         context.getSource().sendError(Text.literal(message));
     }
 

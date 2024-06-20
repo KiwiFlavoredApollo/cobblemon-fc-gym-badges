@@ -1,7 +1,6 @@
 package kiwiapollo.fcgymbadges.commands;
 
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
@@ -14,7 +13,7 @@ public class PlayerArgumentSuggestionProvider implements SuggestionProvider<Serv
     @Override
     public CompletableFuture<Suggestions> getSuggestions(
             CommandContext<ServerCommandSource> context,
-            SuggestionsBuilder builder) throws CommandSyntaxException {
+            SuggestionsBuilder builder) {
         return EntityArgumentType.player().listSuggestions(context, builder);
     }
 }

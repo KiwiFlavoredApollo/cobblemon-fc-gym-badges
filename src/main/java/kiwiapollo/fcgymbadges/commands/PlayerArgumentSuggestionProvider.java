@@ -1,4 +1,4 @@
-package kiwiapollo.fcgymbadges.commands.suggestion;
+package kiwiapollo.fcgymbadges.commands;
 
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;

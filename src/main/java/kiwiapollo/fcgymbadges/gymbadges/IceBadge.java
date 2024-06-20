@@ -1,4 +1,4 @@
-package kiwiapollo.fcgymbadges;
+package kiwiapollo.fcgymbadges.gymbadges;
 
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
 

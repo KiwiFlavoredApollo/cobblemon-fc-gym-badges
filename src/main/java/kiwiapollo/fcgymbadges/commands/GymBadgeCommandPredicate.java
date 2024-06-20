@@ -1,20 +1,22 @@
-package kiwiapollo.fcgymbadges.commands.predicates;
+package kiwiapollo.fcgymbadges.commands;
 
 import kiwiapollo.fcgymbadges.exceptions.LuckPermsNotLoadedException;
 import kiwiapollo.fcgymbadges.exceptions.NotExecutedByPlayerException;
 import net.luckperms.api.LuckPermsProvider;
-import net.luckperms.api.node.types.PermissionNode;
+import net.luckperms.api.model.user.User;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
-public abstract class GymBadgeCommandPredicate implements Predicate<ServerCommandSource> {
+public class GymBadgeCommandPredicate implements Predicate<ServerCommandSource> {
     private static final int OP_LEVEL = 2;
-    private final String permission;
+    private final List<String> permissions;
 
-    public GymBadgeCommandPredicate(String permission) {
-        this.permission = permission;
+    public GymBadgeCommandPredicate(String... permissions) {
+        this.permissions = Arrays.asList(permissions);
     }
 
     @Override
@@ -22,9 +24,12 @@ public abstract class GymBadgeCommandPredicate implements Predicate<ServerComman
         try {
             assertExecutedByPlayer(source);
             assertLoadedLuckPerms();
-            return isExistLuckPermPermission(source);
+
+            return isExistLuckPermsPermission(source);
+
         } catch (NotExecutedByPlayerException e) {
             return true;
+
         } catch (LuckPermsNotLoadedException e) {
             return isExistOpPermission(source);
         }
@@ -38,21 +43,19 @@ public abstract class GymBadgeCommandPredicate implements Predicate<ServerComman
 
     private void assertLoadedLuckPerms() throws LuckPermsNotLoadedException {
         try {
-            Class.forName("net.luckperms.api");
+            Class.forName("net.luckperms.api.LuckPerms");
         } catch (ClassNotFoundException e) {
             throw new LuckPermsNotLoadedException();
         }
     }
 
-    protected boolean isExistLuckPermPermission(ServerCommandSource source) {
+    protected boolean isExistLuckPermsPermission(ServerCommandSource source) {
         ServerPlayerEntity player = source.getPlayer();
-        PermissionNode permissionNode = createPermissionNode();
-        return LuckPermsProvider.get().getPlayerAdapter(ServerPlayerEntity.class)
-                .getPermissionData(player).checkPermission(permissionNode.getPermission()).asBoolean();
-    }
+        User user = LuckPermsProvider.get().getUserManager().getUser(player.getUuid());
 
-    private PermissionNode createPermissionNode() {
-        return PermissionNode.builder(permission).value(false).build();
+        return permissions.stream().anyMatch(permission ->
+                user.getCachedData().getPermissionData().checkPermission(permission).asBoolean()
+        );
     }
 
     private boolean isExistOpPermission(ServerCommandSource source) {

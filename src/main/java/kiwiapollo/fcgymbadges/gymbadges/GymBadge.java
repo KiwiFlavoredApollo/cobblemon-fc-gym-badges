@@ -23,46 +23,8 @@ public class GymBadge {
         return item;
     }
 
-    public String getNameSnakeCase() {
+    public String getName() {
         return identifier.getPath();
-    }
-
-    public String getNameCamelCase() {
-        return snakeToCamel(getNameSnakeCase());
-    }
-
-    private String snakeToCamel(String snakeCase) {
-        Pattern pattern = Pattern.compile("([a-z])_([a-z])");
-        Matcher matcher = pattern.matcher(snakeCase.toLowerCase());
-
-        StringBuilder stringBuilder = new StringBuilder();
-        while(matcher.find()) {
-            matcher.appendReplacement(stringBuilder,
-                    matcher.group(1) + matcher.group(2).toUpperCase());
-        }
-        matcher.appendTail(stringBuilder);
-
-        return stringBuilder.toString();
-    }
-
-    public String getDisplayName() {
-        return snakeToDisplay(getNameSnakeCase());
-    }
-
-    private String snakeToDisplay(String snakeCase) {
-        String underscoreToWhitespace = snakeCase.replaceAll("_", " ");
-
-        Pattern pattern = Pattern.compile("(^|\\s)([a-z])");
-        Matcher matcher = pattern.matcher(underscoreToWhitespace.toLowerCase());
-
-        StringBuilder stringBuilder = new StringBuilder();
-        while(matcher.find()) {
-            matcher.appendReplacement(stringBuilder,
-                    matcher.group(1) + matcher.group(2).toUpperCase());
-        }
-        matcher.appendTail(stringBuilder);
-
-        return stringBuilder.toString();
     }
 
     public void register() {

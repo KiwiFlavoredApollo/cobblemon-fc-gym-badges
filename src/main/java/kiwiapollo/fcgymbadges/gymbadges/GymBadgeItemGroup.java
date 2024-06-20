@@ -38,6 +38,8 @@ public class GymBadgeItemGroup {
                     entries.add(FractalCoffeeGymBadges.ICE_BADGE.getItem());
                     entries.add(FractalCoffeeGymBadges.WATER_BADGE.getItem());
                     entries.add(FractalCoffeeGymBadges.DRAGON_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.GROUND_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.PSYCHIC_BADGE.getItem());
                 })
                 .displayName(Text.translatable("Cobblemon FC Gym Badges"))
                 .build();

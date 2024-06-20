@@ -93,6 +93,8 @@ public class GymBadgeProgress {
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.ICE_BADGE);
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.WATER_BADGE);
         setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.DRAGON_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.GROUND_BADGE);
+        setFalseGymBadgeProperty(jsonObject, FractalCoffeeGymBadges.PSYCHIC_BADGE);
         return jsonObject;
     }
 
@@ -140,7 +142,7 @@ public class GymBadgeProgress {
 
     public boolean isExistGymBadge(GymBadge gymBadge) {
         String name = CaseConverter.snakeToCamel(gymBadge.getName());
-        return gymBadges.get(name).getAsBoolean();
+        return gymBadges.get(name) != null && gymBadges.get(name).getAsBoolean();
     }
 
     public void addGymBadge(GymBadge gymBadge) {

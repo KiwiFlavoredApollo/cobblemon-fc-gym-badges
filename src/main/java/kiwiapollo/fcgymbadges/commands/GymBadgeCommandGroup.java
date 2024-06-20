@@ -18,6 +18,8 @@ public class GymBadgeCommandGroup {
                         .then(new GymBadgeCommand(FractalCoffeeGymBadges.ICE_BADGE).getGymBadgeArgumentBuilder())
                         .then(new GymBadgeCommand(FractalCoffeeGymBadges.WATER_BADGE).getGymBadgeArgumentBuilder())
                         .then(new GymBadgeCommand(FractalCoffeeGymBadges.DRAGON_BADGE).getGymBadgeArgumentBuilder())
+                        .then(new GymBadgeCommand(FractalCoffeeGymBadges.GROUND_BADGE).getGymBadgeArgumentBuilder())
+                        .then(new GymBadgeCommand(FractalCoffeeGymBadges.PSYCHIC_BADGE).getGymBadgeArgumentBuilder())
                 )
         );
     }

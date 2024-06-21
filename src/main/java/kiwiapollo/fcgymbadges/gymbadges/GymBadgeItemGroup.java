@@ -40,6 +40,7 @@ public class GymBadgeItemGroup {
                     entries.add(FractalCoffeeGymBadges.DRAGON_BADGE.getItem());
                     entries.add(FractalCoffeeGymBadges.GROUND_BADGE.getItem());
                     entries.add(FractalCoffeeGymBadges.PSYCHIC_BADGE.getItem());
+                    entries.add(FractalCoffeeGymBadges.GHOST_BADGE.getItem());
                 })
                 .displayName(Text.translatable("Cobblemon FC Gym Badges"))
                 .build();

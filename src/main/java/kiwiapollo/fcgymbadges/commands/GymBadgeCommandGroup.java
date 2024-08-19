@@ -20,7 +20,9 @@ public class GymBadgeCommandGroup {
                         .then(new GymBadgeCommand(FractalCoffeeGymBadges.DRAGON_BADGE).getGymBadgeArgumentBuilder())
                         .then(new GymBadgeCommand(FractalCoffeeGymBadges.GROUND_BADGE).getGymBadgeArgumentBuilder())
                         .then(new GymBadgeCommand(FractalCoffeeGymBadges.PSYCHIC_BADGE).getGymBadgeArgumentBuilder())
-                        .then(new GymBadgeCommand(FractalCoffeeGymBadges.PSYCHIC_BADGE).getGymBadgeArgumentBuilder())
+                        .then(new GymBadgeCommand(FractalCoffeeGymBadges.GHOST_BADGE).getGymBadgeArgumentBuilder())
+                        .then(new GymBadgeCommand(FractalCoffeeGymBadges.WING_BADGE).getGymBadgeArgumentBuilder())
+                        .then(new GymBadgeCommand(FractalCoffeeGymBadges.FOUNTAIN_BADGE).getGymBadgeArgumentBuilder())
                 )
         );
     }

@@ -1,69 +1,40 @@
 package kiwiapollo.fcgymbadges.commands;
 
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
 import kiwiapollo.fcgymbadges.utilities.CaseConverter;
-import net.minecraft.command.EntitySelector;
-import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 
-public class GymBadgeCommand {
+public class GymBadgeCommand extends LiteralArgumentBuilder<ServerCommandSource> {
     private final GymBadge gymBadge;
 
-    GymBadgeCommand(GymBadge gymBadge) {
+    public GymBadgeCommand(GymBadge gymBadge) {
+        super(CaseConverter.snakeToLower(gymBadge.item.toString()));
         this.gymBadge = gymBadge;
+
+        this.requires(new GymBadgeCommandPredicate(
+                String.format("%s.%s",
+                        FractalCoffeeGymBadges.NAMESPACE,
+                        getLiteral()
+                ),
+                String.format("%s.%s.create",
+                        FractalCoffeeGymBadges.NAMESPACE,
+                        getLiteral()
+                )
+        ))
+        .then(getCreateGymBadgeSubcommand());
     }
 
-    public LiteralArgumentBuilder<ServerCommandSource> getGymBadgeArgumentBuilder() {
-        return CommandManager.literal(CaseConverter.snakeToLower(this.gymBadge.getName()))
+    private LiteralArgumentBuilder<ServerCommandSource> getCreateGymBadgeSubcommand() {
+        return CommandManager.literal("create")
                 .requires(new GymBadgeCommandPredicate(
-                        String.format("%s.%s.give",
+                        String.format("%s.%s.create",
                                 FractalCoffeeGymBadges.NAMESPACE,
-                                CaseConverter.snakeToLower(this.gymBadge.getName())
-                        ),
-                        String.format("%s.%s.clear",
-                                FractalCoffeeGymBadges.NAMESPACE,
-                                CaseConverter.snakeToLower(this.gymBadge.getName())
+                                getLiteral()
                         )
                 ))
-                .then(getGiveBadgeArgumentBuilder())
-                .then(getClearBadgeArgumentBuilder());
-    }
-
-    private LiteralArgumentBuilder<ServerCommandSource> getGiveBadgeArgumentBuilder() {
-        return CommandManager.literal("give")
-                .requires(new GymBadgeCommandPredicate(
-                        String.format("%s.%s.give",
-                                FractalCoffeeGymBadges.NAMESPACE,
-                                CaseConverter.snakeToLower(this.gymBadge.getName())
-                        )
-                ))
-                .then(RequiredArgumentBuilder
-                        .<ServerCommandSource, EntitySelector>argument(
-                                "player", EntityArgumentType.player()
-                        )
-                        .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new GiveGymBadgeCommand(this.gymBadge))
-                );
-    }
-
-    private LiteralArgumentBuilder<ServerCommandSource> getClearBadgeArgumentBuilder() {
-        return CommandManager.literal("clear")
-                .requires(new GymBadgeCommandPredicate(
-                        String.format("%s.%s.clear",
-                                FractalCoffeeGymBadges.NAMESPACE,
-                                CaseConverter.snakeToLower(this.gymBadge.getName())
-                        )
-                ))
-                .then(RequiredArgumentBuilder
-                        .<ServerCommandSource, EntitySelector>argument(
-                                "player", EntityArgumentType.player()
-                        )
-                        .suggests(new PlayerArgumentSuggestionProvider())
-                        .executes(new ClearGymBadgeCommand(this.gymBadge))
-                );
+                .executes(new CreateGymBadgeCommand(gymBadge));
     }
 }

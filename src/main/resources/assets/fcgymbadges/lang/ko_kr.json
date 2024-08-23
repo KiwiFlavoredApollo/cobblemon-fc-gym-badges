@@ -1,4 +1,17 @@
 {
+  "item.fcgymbadges.dark_badge": "악 뱃지",
+  "item.fcgymbadges.dragon_badge": "드래곤 뱃지",
+  "item.fcgymbadges.electric_badge": "전기 뱃지",
   "item.fcgymbadges.fire_badge": "불꽃 뱃지",
-  "item.fcgymbadges.flying_badge": "비행 뱃지"
+  "item.fcgymbadges.flying_badge": "비행 뱃지",
+  "item.fcgymbadges.fountain_badge": "분수 뱃지",
+  "item.fcgymbadges.ghost_badge": "고스트 뱃지",
+  "item.fcgymbadges.ground_badge": "땅 뱃지",
+  "item.fcgymbadges.ice_badge": "얼음 뱃지",
+  "item.fcgymbadges.leaf_badge": "풀 뱃지",
+  "item.fcgymbadges.psychic_badge": "에스퍼 뱃지",
+  "item.fcgymbadges.rock_badge": "바위 뱃지",
+  "item.fcgymbadges.unaware_badge": "천진 뱃지",
+  "item.fcgymbadges.water_badge": "물 뱃지",
+  "item.fcgymbadges.wing_badge": "날개 뱃지"
 }

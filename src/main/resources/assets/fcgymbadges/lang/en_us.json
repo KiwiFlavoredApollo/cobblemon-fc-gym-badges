@@ -1,4 +1,17 @@
 {
+  "item.fcgymbadges.dark_badge": "Dark Badge",
+  "item.fcgymbadges.dragon_badge": "Dragon Badge",
+  "item.fcgymbadges.electric_badge": "Electric Badge",
   "item.fcgymbadges.fire_badge": "Fire Badge",
-  "item.fcgymbadges.flying_badge": "Flying Badge"
+  "item.fcgymbadges.flying_badge": "Flying Badge",
+  "item.fcgymbadges.fountain_badge": "Fountain Badge",
+  "item.fcgymbadges.ghost_badge": "Ghost Badge",
+  "item.fcgymbadges.ground_badge": "Ground Badge",
+  "item.fcgymbadges.ice_badge": "Ice Badge",
+  "item.fcgymbadges.leaf_badge": "Leaf Badge",
+  "item.fcgymbadges.psychic_badge": "Psychic Badge",
+  "item.fcgymbadges.rock_badge": "Rock Badge",
+  "item.fcgymbadges.unaware_badge": "Unaware Badge",
+  "item.fcgymbadges.water_badge": "Water Badge",
+  "item.fcgymbadges.wing_badge": "Wing Badge"
 }

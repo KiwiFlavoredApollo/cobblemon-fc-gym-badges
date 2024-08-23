@@ -1,60 +1,79 @@
 package kiwiapollo.fcgymbadges;
 
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.logging.LogUtils;
-import kiwiapollo.fcgymbadges.commands.GymBadgeCommandGroup;
-import kiwiapollo.fcgymbadges.gymbadges.*;
+import kiwiapollo.fcgymbadges.commands.GymBadgeCommand;
+import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
+import kiwiapollo.fcgymbadges.utilities.CaseConverter;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
+
+import javax.naming.Name;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FractalCoffeeGymBadges implements ModInitializer {
     public static final String NAMESPACE = "fcgymbadges";
-    public static final GymBadge DARK_BADGE = new DarkBadge();
-    public static final GymBadge LEAF_BADGE = new LeafBadge();
-    public static final GymBadge FLYING_BADGE = new FlyingBadge();
-    public static final GymBadge ROCK_BADGE = new RockBadge();
-    public static final GymBadge ELECTRIC_BADGE = new ElectricBadge();
-    public static final GymBadge FIRE_BADGE = new FireBadge();
-    public static final GymBadge ICE_BADGE = new IceBadge();
-    public static final GymBadge WATER_BADGE = new WaterBadge();
-    public static final GymBadge DRAGON_BADGE = new DragonBadge();
-    public static final GymBadge GROUND_BADGE = new GroundBadge();
-    public static final GymBadge PSYCHIC_BADGE = new PsychicBadge();
-    public static final GymBadge GHOST_BADGE = new GhostBadge();
-    public static final GymBadge WING_BADGE = new WingBadge();
-    public static final GymBadge FOUNTAIN_BADGE = new FountainBadge();
-    public static final GymBadgeItemGroup GYM_BADGE_ITEM_GROUP = new GymBadgeItemGroup();
-    public static final GymBadgeCommandGroup GYM_BADGE_COMMAND_GROUP = new GymBadgeCommandGroup();
+    public static final RegistryKey<ItemGroup> GYM_BADGE_ITEM_GROUP_KEY =
+            RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(NAMESPACE, "item_group"));
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final List<GymBadge> GymBadges = new ArrayList<>();
+    public static final ItemGroup GYM_BADGE_ITEM_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(Registries.ITEM.get(Identifier.of(NAMESPACE, "fire_badge"))))
+            .displayName(Text.translatable("Cobblemon FC Gym Badges"))
+            .build();
 
     @Override
     public void onInitialize() {
-        registerGymBadges();
-        registerGymBadgeItemGroup();
-        registerCommands();
-    }
+        GymBadges.add(new GymBadge("dark_badge"));
+        GymBadges.add(new GymBadge("leaf_badge"));
+        GymBadges.add(new GymBadge("flying_badge"));
+        GymBadges.add(new GymBadge("rock_badge"));
+        GymBadges.add(new GymBadge("electric_badge"));
+        GymBadges.add(new GymBadge("fire_badge"));
+        GymBadges.add(new GymBadge("ice_badge"));
+        GymBadges.add(new GymBadge("water_badge"));
+        GymBadges.add(new GymBadge("dragon_badge"));
+        GymBadges.add(new GymBadge("ground_badge"));
+        GymBadges.add(new GymBadge("psychic_badge"));
+        GymBadges.add(new GymBadge("ghost_badge"));
+        GymBadges.add(new GymBadge("wing_badge"));
+        GymBadges.add(new GymBadge("fountain_badge"));
 
-    private void registerGymBadges() {
-        DARK_BADGE.register();
-        LEAF_BADGE.register();
-        FLYING_BADGE.register();
-        ROCK_BADGE.register();
-        ELECTRIC_BADGE.register();
-        FIRE_BADGE.register();
-        ICE_BADGE.register();
-        WATER_BADGE.register();
-        DRAGON_BADGE.register();
-        GROUND_BADGE.register();
-        PSYCHIC_BADGE.register();
-        GHOST_BADGE.register();
-        WING_BADGE.register();
-        FOUNTAIN_BADGE.register();
-    }
+        for (GymBadge b : GymBadges) {
+            Registry.register(Registries.ITEM, b.identifier, b.item);
+        }
 
-    private void registerGymBadgeItemGroup() {
-        GYM_BADGE_ITEM_GROUP.register();
-    }
+        Registry.register(Registries.ITEM_GROUP, GYM_BADGE_ITEM_GROUP_KEY, GYM_BADGE_ITEM_GROUP);
 
-    private void registerCommands() {
-        GYM_BADGE_COMMAND_GROUP.register();
+        ItemGroupEvents.modifyEntriesEvent(GYM_BADGE_ITEM_GROUP_KEY).register(itemGroup -> {
+            for (GymBadge b : GymBadges) {
+                itemGroup.add(b.item);
+            }
+        });
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            LiteralArgumentBuilder<ServerCommandSource> rootCommand = CommandManager.literal(NAMESPACE);
+
+            for (GymBadge b : GymBadges) {
+                rootCommand.then(new GymBadgeCommand(b));
+            }
+
+            dispatcher.register(rootCommand);
+        });
     }
 }

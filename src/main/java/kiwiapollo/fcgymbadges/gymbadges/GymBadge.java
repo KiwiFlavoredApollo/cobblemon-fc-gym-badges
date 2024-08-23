@@ -5,8 +5,6 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
-import java.util.List;
-
 public class GymBadge {
     public final Item item;
     public final Identifier identifier;

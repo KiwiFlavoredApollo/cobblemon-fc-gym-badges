@@ -2,7 +2,6 @@ package kiwiapollo.fcgymbadges.commands;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
 import kiwiapollo.fcgymbadges.exceptions.AvailablePlayerInventorySlotNotExistException;
 import kiwiapollo.fcgymbadges.exceptions.NotExecutedByPlayerException;

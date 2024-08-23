@@ -4,7 +4,6 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.logging.LogUtils;
 import kiwiapollo.fcgymbadges.commands.GymBadgeCommand;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
-import kiwiapollo.fcgymbadges.utilities.CaseConverter;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -20,11 +19,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 
-import javax.naming.Name;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FractalCoffeeGymBadges implements ModInitializer {
     public static final String NAMESPACE = "fcgymbadges";

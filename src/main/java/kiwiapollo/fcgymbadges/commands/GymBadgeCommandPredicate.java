@@ -1,7 +1,6 @@
 package kiwiapollo.fcgymbadges.commands;
 
 import kiwiapollo.fcgymbadges.exceptions.LuckPermsNotLoadedException;
-import kiwiapollo.fcgymbadges.exceptions.NotExecutedByPlayerException;
 import net.luckperms.api.LuckPermsProvider;
 import net.luckperms.api.model.user.User;
 import net.minecraft.server.command.ServerCommandSource;
@@ -22,22 +21,12 @@ public class GymBadgeCommandPredicate implements Predicate<ServerCommandSource> 
     @Override
     public boolean test(ServerCommandSource source) {
         try {
-            assertExecutedByPlayer(source);
             assertLoadedLuckPerms();
 
             return isExistLuckPermsPermission(source);
 
-        } catch (NotExecutedByPlayerException e) {
-            return true;
-
         } catch (LuckPermsNotLoadedException e) {
             return isExistOpPermission(source);
-        }
-    }
-
-    private void assertExecutedByPlayer(ServerCommandSource source) throws NotExecutedByPlayerException {
-        if (!source.isExecutedByPlayer()) {
-            throw new NotExecutedByPlayerException();
         }
     }
 

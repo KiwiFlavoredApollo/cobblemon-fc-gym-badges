@@ -4,6 +4,8 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.logging.LogUtils;
 import kiwiapollo.fcgymbadges.commands.GymBadgeCommand;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
+import kiwiapollo.fcgymbadges.utilities.Config;
+import kiwiapollo.fcgymbadges.utilities.ConfigLoader;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -32,6 +34,7 @@ public class FractalCoffeeGymBadges implements ModInitializer {
             .icon(() -> new ItemStack(Registries.ITEM.get(Identifier.of(NAMESPACE, "fire_badge"))))
             .displayName(Text.translatable("Cobblemon FC Gym Badges"))
             .build();
+    public static final Config CONFIG = ConfigLoader.load();
 
     @Override
     public void onInitialize() {

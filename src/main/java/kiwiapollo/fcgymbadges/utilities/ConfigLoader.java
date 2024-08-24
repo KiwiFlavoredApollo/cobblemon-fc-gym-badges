@@ -13,8 +13,6 @@ public class ConfigLoader {
     private static final File CONFIG_DIR =
             new File(FabricLoader.getInstance().getConfigDir().toFile(), FractalCoffeeGymBadges.NAMESPACE);
     private static final File CONFIG_FILE = new File(CONFIG_DIR, "config.json");
-    private static final InputStream DEFAULT_CONFIG_FILE =
-        FractalCoffeeGymBadges.class.getClassLoader().getResourceAsStream("config/defaults.json");
     private static final Gson GSON = new Gson();
 
     public static Config load() {
@@ -30,8 +28,16 @@ public class ConfigLoader {
     }
 
     private static void copyDefaultConfig() {
-        try {
-            Files.copy(DEFAULT_CONFIG_FILE, CONFIG_FILE.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        try (
+                InputStream defaults = ConfigLoader.class.getClassLoader()
+                        .getResourceAsStream("config/defaults.json")
+        ) {
+            if (!CONFIG_DIR.exists()) {
+                CONFIG_DIR.mkdirs();
+            }
+
+            Files.copy(defaults, CONFIG_FILE.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +52,11 @@ public class ConfigLoader {
     }
 
     private static Config loadDefaultConfig() {
-        try (InputStreamReader reader = new InputStreamReader(DEFAULT_CONFIG_FILE)) {
+        try (
+                InputStream defaults = ConfigLoader.class.getClassLoader()
+                        .getResourceAsStream("config/defaults.json");
+                InputStreamReader reader = new InputStreamReader(defaults)
+        ) {
             return GSON.fromJson(reader, Config.class);
         } catch (IOException e) {
             throw new RuntimeException(e);

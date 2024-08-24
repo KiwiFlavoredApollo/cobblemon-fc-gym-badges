@@ -36,10 +36,10 @@
 		"fabric-api": "*"
 	},
 	"recommends": {
-		"cobblemon": "*",
-		"luckperms": ">=5.4"
+		"cobblemon": "*"
 	},
 	"suggests": {
-		"another-mod": "*"
+		"luckperms": ">=5.4",
+		"eights_economy_p": "<=1.1.2"
 	}
 }

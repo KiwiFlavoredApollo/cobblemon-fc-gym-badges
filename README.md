@@ -52,7 +52,7 @@ Players with sufficient permission can create gym badges for 100 dollars (or wha
 
 ## Commands
 
-## With LuckPerms installed
+### With LuckPerms installed
 
 Given that a player has sufficient permission (`fcgymbadges.firebadge.create`), the player can execute following command to create Fire Badge
 
@@ -60,6 +60,6 @@ Given that a player has sufficient permission (`fcgymbadges.firebadge.create`), 
 /fcgymbadges firebadge create
 ```
 
-## Without LuckPerms installed
+### Without LuckPerms installed
 
 Only players with op level (minimum of 2) can use the commands

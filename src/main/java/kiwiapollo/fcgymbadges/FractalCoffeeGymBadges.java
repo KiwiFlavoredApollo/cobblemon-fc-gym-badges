@@ -3,9 +3,11 @@ package kiwiapollo.fcgymbadges;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.logging.LogUtils;
 import kiwiapollo.fcgymbadges.commands.GymBadgeCommand;
+import kiwiapollo.fcgymbadges.economies.Economy;
 import kiwiapollo.fcgymbadges.gymbadges.GymBadge;
 import kiwiapollo.fcgymbadges.utilities.Config;
 import kiwiapollo.fcgymbadges.utilities.ConfigLoader;
+import kiwiapollo.fcgymbadges.utilities.EconomyFactory;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -35,6 +37,7 @@ public class FractalCoffeeGymBadges implements ModInitializer {
             .displayName(Text.translatable("Cobblemon FC Gym Badges"))
             .build();
     public static final Config CONFIG = ConfigLoader.load();
+    public static final Economy ECONOMY = EconomyFactory.create(CONFIG.economy);
 
     @Override
     public void onInitialize() {

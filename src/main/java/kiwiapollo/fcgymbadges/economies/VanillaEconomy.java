@@ -1,15 +1,26 @@
 package kiwiapollo.fcgymbadges.economies;
 
 import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
+import kiwiapollo.fcgymbadges.exceptions.InvalidVanillaCurrencyException;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
-public class Vanilla implements Economy {
+public class VanillaEconomy implements Economy {
     private static final Item currencyItem =
             Registries.ITEM.get(new Identifier(FractalCoffeeGymBadges.CONFIG.vanillaCurrency));
+
+    public VanillaEconomy() throws InvalidVanillaCurrencyException {
+        if (currencyItem == Items.AIR) {
+            throw new InvalidVanillaCurrencyException();
+        }
+
+        FractalCoffeeGymBadges.LOGGER.info("Loaded VanillaEconomy");
+    }
+
     @Override
     public double getBalance(ServerPlayerEntity player) {
         int count = 0;

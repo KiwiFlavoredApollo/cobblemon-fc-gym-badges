@@ -40,6 +40,6 @@
 	},
 	"suggests": {
 		"luckperms": ">=5.4",
-		"eights_economy_p": "<=1.1.2"
+		"eights_economy_p": ">=1.1.2"
 	}
 }

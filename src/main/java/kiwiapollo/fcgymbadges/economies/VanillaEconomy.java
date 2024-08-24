@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class VanillaEconomy implements Economy {
     private static final Item currencyItem =
-            Registries.ITEM.get(new Identifier(FractalCoffeeGymBadges.CONFIG.vanillaCurrency));
+            Registries.ITEM.get(new Identifier(FractalCoffeeGymBadges.CONFIG.vanillaCurrencyItem));
 
     public VanillaEconomy() throws InvalidVanillaCurrencyException {
         if (currencyItem == Items.AIR) {

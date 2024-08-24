@@ -1,5 +1,5 @@
 {
   "economy": "None",
-  "vanillaCurrency": "minecraft:diamond",
+  "vanillaCurrencyItem": "minecraft:diamond",
   "gymBadgeCreatePrice": 0
 }

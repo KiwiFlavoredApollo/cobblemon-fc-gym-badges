@@ -119,7 +119,7 @@ public class CreateGymBadgeCommand implements Command<ServerCommandSource> {
             return String.format(
                     "Not enough item: %s %d",
                     Registries.ITEM.get(new Identifier(
-                            FractalCoffeeGymBadges.CONFIG.vanillaCurrency)).getName().getString(),
+                            FractalCoffeeGymBadges.CONFIG.vanillaCurrencyItem)).getName().getString(),
                     (int) Math.floor(FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice)
             );
 

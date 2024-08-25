@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "fcgymbadges:item/snowflake_badge"
+    "layer0": "fcgymbadges:item/snowflower_badge"
   }
 }

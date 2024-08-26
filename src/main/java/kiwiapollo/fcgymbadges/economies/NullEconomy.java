@@ -27,4 +27,9 @@ public class NullEconomy implements Economy {
     public boolean isExistEnoughBalance(ServerPlayerEntity player, double amount) {
         return true;
     }
+
+    @Override
+    public String getNotEnoughBalanceMessage() {
+        return "";
+    }
 }

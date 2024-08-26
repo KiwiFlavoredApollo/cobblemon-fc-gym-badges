@@ -5,7 +5,8 @@ import kiwiapollo.fcgymbadges.economies.NullEconomy;
 import kiwiapollo.fcgymbadges.economies.OctoEconomy;
 import kiwiapollo.fcgymbadges.economies.VanillaEconomy;
 import kiwiapollo.fcgymbadges.exceptions.EconomyNotLoadedException;
-import kiwiapollo.fcgymbadges.exceptions.InvalidVanillaCurrencyException;
+import kiwiapollo.fcgymbadges.exceptions.InvalidCurrencyAmountException;
+import kiwiapollo.fcgymbadges.exceptions.InvalidVanillaCurrencyItemException;
 
 public class EconomyFactory {
     public static Economy create(String identifier) {
@@ -16,7 +17,11 @@ public class EconomyFactory {
                 default -> new NullEconomy();
             };
 
-        } catch (InvalidVanillaCurrencyException | EconomyNotLoadedException e) {
+        } catch (
+                InvalidVanillaCurrencyItemException
+                | InvalidCurrencyAmountException
+                | EconomyNotLoadedException e
+        ) {
             return new NullEconomy();
         }
     }

@@ -29,9 +29,7 @@ public class CreateGymBadgeCommand implements Command<ServerCommandSource> {
             ItemStack itemStack = new ItemStack(gymBadge.item, 1);
             assertExistAvailablePlayerInventorySlot(player, itemStack);
 
-            assertValidEconomyAmount(FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice);
             assertPlayerExistEnoughBalance(player, FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice);
-
             FractalCoffeeGymBadges.ECONOMY.removeBalance(player, FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice);
 
             player.getInventory().insertStack(itemStack);
@@ -49,17 +47,10 @@ public class CreateGymBadgeCommand implements Command<ServerCommandSource> {
             context.getSource().sendError(Text.literal("Command should be run by a player"));
             return -1;
 
-        } catch (InvalidEconomyAmountException e) {
-            FractalCoffeeGymBadges.LOGGER.error(
-                    String.format(
-                            "Invalid value set to gymBadgeCreatePrice: %d",
-                            FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice
-                    )
-            );
-            return -1;
-
         } catch (NotEnoughBalanceException e) {
-            context.getSource().sendError(Text.literal(getNotEnoughBalanceMessage()));
+            context.getSource().sendError(
+                    Text.literal(FractalCoffeeGymBadges.ECONOMY.getNotEnoughBalanceMessage())
+            );
             return -1;
 
         } catch (AvailablePlayerInventorySlotNotExistException e) {
@@ -71,12 +62,6 @@ public class CreateGymBadgeCommand implements Command<ServerCommandSource> {
                     )
             );
             return -1;
-        }
-    }
-
-    private void assertValidEconomyAmount(float amount) throws InvalidEconomyAmountException {
-        if (amount < 0) {
-            throw new InvalidEconomyAmountException();
         }
     }
 
@@ -112,22 +97,5 @@ public class CreateGymBadgeCommand implements Command<ServerCommandSource> {
         boolean canAddCount = slotStack.getMaxCount() - slotStack.getCount() > itemStack.getCount();
 
         return isSameItem && canAddCount;
-    }
-
-    private String getNotEnoughBalanceMessage() {
-        if (FractalCoffeeGymBadges.ECONOMY instanceof VanillaEconomy) {
-            return String.format(
-                    "Not enough item: %s %d",
-                    Registries.ITEM.get(new Identifier(
-                            FractalCoffeeGymBadges.CONFIG.vanillaCurrencyItem)).getName().getString(),
-                    (int) Math.floor(FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice)
-            );
-
-        } else {
-            return String.format(
-                    "Not enough balance: $%.2f",
-                    FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice
-            );
-        }
     }
 }

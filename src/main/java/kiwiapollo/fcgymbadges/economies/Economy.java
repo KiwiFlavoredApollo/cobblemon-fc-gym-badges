@@ -7,4 +7,5 @@ public interface Economy {
     void addBalance(ServerPlayerEntity player, double amount);
     void removeBalance(ServerPlayerEntity player, double amount);
     boolean isExistEnoughBalance(ServerPlayerEntity player, double amount);
+    String getNotEnoughBalanceMessage();
 }

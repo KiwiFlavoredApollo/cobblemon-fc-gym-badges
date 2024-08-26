@@ -55,7 +55,7 @@ public class FractalCoffeeGymBadges implements ModInitializer {
         GymBadges.add(new GymBadge("ghost_badge"));
         GymBadges.add(new GymBadge("wing_badge"));
         GymBadges.add(new GymBadge("unaware_badge"));
-        GymBadges.add(new GymBadge("snowflower_badge"));
+        GymBadges.add(new GymBadge("icicle_badge"));
 
         for (GymBadge b : GymBadges) {
             Registry.register(Registries.ITEM, b.identifier, b.item);

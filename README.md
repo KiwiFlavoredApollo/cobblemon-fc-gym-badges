@@ -26,7 +26,7 @@
 
 Economy feature can be disabled if `economy` is set to any other random strings
 
-### Case 1
+### Case 1 Using `Vanilla` Economy
 
 ```json
 {
@@ -38,7 +38,7 @@ Economy feature can be disabled if `economy` is set to any other random strings
 
 Players with sufficient permission can create gym badges for the price of four iron ingots 
 
-### Case 2
+### Case 2 Using `OctoEconomy` Economy
 
 ```json
 {
@@ -62,4 +62,4 @@ Given that a player has sufficient permission (`fcgymbadges.firebadge.create`), 
 
 ### Without LuckPerms installed
 
-Only players with op level (minimum of 2) can use the commands
+Only players with op permission (minimum level of 2) can use the commands

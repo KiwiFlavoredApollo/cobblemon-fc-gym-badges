@@ -19,13 +19,13 @@
 			"kiwiapollo.fcgymbadges.FractalCoffeeGymBadges"
 		],
 		"client": [
-			"com.example.TemplateModClient"
+			"kiwiapollo.fcgymbadges.TemplateModClient"
 		]
 	},
 	"mixins": [
 		"fcgymbadges.mixins.json",
 		{
-			"config": "template-mod.client.mixins.json",
+			"config": "fcgymbadges.client.mixins.json",
 			"environment": "client"
 		}
 	],

@@ -1,4 +1,4 @@
-package com.example;
+package kiwiapollo.fcgymbadges;
 
 import net.fabricmc.api.ClientModInitializer;
 

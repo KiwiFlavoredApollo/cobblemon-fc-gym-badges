@@ -19,7 +19,7 @@ public class ReloadConfigCommand extends LiteralArgumentBuilder<ServerCommandSou
 
     public int reload(CommandContext<ServerCommandSource> context) {
         FCGymBadges.config = ConfigLoader.load();
-        FCGymBadges.economy = EconomyFactory.create(FCGymBadges.config.economy);
+        FCGymBadges.economy = new EconomyFactory().create(FCGymBadges.config.economy);
 
         if (context.getSource().isExecutedByPlayer()) {
             context.getSource().getPlayer().sendMessage(Text.translatable("command.fcgymbadges.reload_config.success"));

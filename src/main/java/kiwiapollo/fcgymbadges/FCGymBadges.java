@@ -21,7 +21,7 @@ public class FCGymBadges implements ModInitializer {
     public static final String MOD_ID = "fcgymbadges";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public static Config config = ConfigLoader.load();
+    public static Config config = new ConfigLoader().load();
     public static Economy economy = new EconomyFactory().create(config.economy);
 
     @Override

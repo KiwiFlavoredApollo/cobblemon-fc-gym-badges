@@ -14,7 +14,7 @@ public class ConfigLoader {
     private static final File CONFIG_FILE = new File(CONFIG_DIR, "config.json");
     private static final Gson GSON = new Gson();
 
-    public static Config load() {
+    public Config load() {
         try {
             return loadExistingConfig();
 
@@ -27,7 +27,7 @@ public class ConfigLoader {
         }
     }
 
-    private static void copyDefaultConfig() {
+    private void copyDefaultConfig() {
         try (InputStream defaults = getDefaultConfigInputStream()) {
             if (!CONFIG_DIR.exists()) {
                 CONFIG_DIR.mkdirs();
@@ -40,7 +40,7 @@ public class ConfigLoader {
         }
     }
 
-    private static Config loadExistingConfig() throws ConfigLoadFailedException {
+    private Config loadExistingConfig() throws ConfigLoadFailedException {
         try (FileReader reader = new FileReader(CONFIG_FILE)) {
             return GSON.fromJson(reader, Config.class);
 
@@ -49,7 +49,7 @@ public class ConfigLoader {
         }
     }
 
-    private static Config loadDefaultConfig() {
+    private Config loadDefaultConfig() {
         try (InputStreamReader reader = new InputStreamReader(getDefaultConfigInputStream())) {
             return GSON.fromJson(reader, Config.class);
 
@@ -58,7 +58,7 @@ public class ConfigLoader {
         }
     }
 
-    private static InputStream getDefaultConfigInputStream() {
+    private InputStream getDefaultConfigInputStream() {
         return ConfigLoader.class.getClassLoader().getResourceAsStream("config/defaults.json");
     }
 }

@@ -1,4 +1,4 @@
-package kiwiapollo.fcgymbadges.utilities;
+package kiwiapollo.fcgymbadges.config;
 
 public class Config {
     public String economy;

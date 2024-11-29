@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.5-SNAPSHOT'
+	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -17,7 +17,6 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven { url = "https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1" }
-	maven { url "https://maven.epherical.com/releases" }
 }
 
 loom {
@@ -46,7 +45,6 @@ dependencies {
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
 	compileOnly("net.luckperms:api:${project.luckperms_version}")
-	compileOnly("com.epherical.octo-economy-api:OctoEconomyApi-fabric:${project.octoecon_version}")
 	modRuntimeOnly("me.djtheredstoner:DevAuth-fabric:1.2.0")
 	implementation("com.google.code.gson:gson:2.8.9")
 

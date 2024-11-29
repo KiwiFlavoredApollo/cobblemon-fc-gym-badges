@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"kiwiapollo.fcgymbadges.FractalCoffeeGymBadges"
+			"kiwiapollo.fcgymbadges.FCGymBadges"
 		],
 		"client": [
 			"kiwiapollo.fcgymbadges.TemplateModClient"
@@ -30,8 +30,8 @@
 		}
 	],
 	"depends": {
-		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.20.1",
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.1",
 		"java": ">=17",
 		"fabric-api": "*"
 	},
@@ -39,7 +39,6 @@
 		"cobblemon": "*"
 	},
 	"suggests": {
-		"luckperms": ">=5.4",
-		"eights_economy_p": ">=1.1.2"
+		"luckperms": ">=5.4"
 	}
 }

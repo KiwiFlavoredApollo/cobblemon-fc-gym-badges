@@ -1,4 +1,8 @@
 {
+  "command.fcgymbadges.create_gymbadge.error.not_enough_balance": "돈이 부족합니다.",
+
+  "command.fcgymbadges.reload_config.success": "설정을 다시 불러들였습니다.",
+
   "item.fcgymbadges.dark_badge": "악 뱃지",
   "item.fcgymbadges.dragon_badge": "드래곤 뱃지",
   "item.fcgymbadges.electric_badge": "전기 뱃지",

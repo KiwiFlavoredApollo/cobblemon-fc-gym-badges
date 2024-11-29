@@ -1,4 +1,8 @@
 {
+  "command.fcgymbadges.create_gymbadge.error.not_enough_balance": "Not enough balance.",
+
+  "command.fcgymbadges.reload_config.success": "Reloaded config.",
+
   "item.fcgymbadges.dark_badge": "Dark Badge",
   "item.fcgymbadges.dragon_badge": "Dragon Badge",
   "item.fcgymbadges.electric_badge": "Electric Badge",

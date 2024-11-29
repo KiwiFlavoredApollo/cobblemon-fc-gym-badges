@@ -1,7 +1,5 @@
 package kiwiapollo.fcgymbadges.economy;
 
-import kiwiapollo.fcgymbadges.exception.EconomyLoadFailedException;
-
 public class EconomyFactory {
     public Economy create(String identifier) {
         try {
@@ -10,7 +8,7 @@ public class EconomyFactory {
                 default -> new NullEconomy();
             };
 
-        } catch (EconomyLoadFailedException e) {
+        } catch (IllegalStateException e) {
             return new NullEconomy();
         }
     }

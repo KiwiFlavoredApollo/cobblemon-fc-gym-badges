@@ -2,7 +2,6 @@ package kiwiapollo.fcgymbadges.config;
 
 import com.google.gson.Gson;
 import kiwiapollo.fcgymbadges.FCGymBadges;
-import kiwiapollo.fcgymbadges.exception.ConfigLoadFailedException;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.*;
@@ -18,7 +17,7 @@ public class ConfigLoader {
         try {
             return loadExistingConfig();
 
-        } catch (ConfigLoadFailedException e) {
+        } catch (IllegalStateException e) {
             FCGymBadges.LOGGER.error("Failed to load config");
 
             copyDefaultConfig();
@@ -40,12 +39,12 @@ public class ConfigLoader {
         }
     }
 
-    private Config loadExistingConfig() throws ConfigLoadFailedException {
+    private Config loadExistingConfig() {
         try (FileReader reader = new FileReader(CONFIG_FILE)) {
             return GSON.fromJson(reader, Config.class);
 
         } catch (IOException e) {
-            throw new ConfigLoadFailedException(e);
+            throw new IllegalStateException(e);
         }
     }
 

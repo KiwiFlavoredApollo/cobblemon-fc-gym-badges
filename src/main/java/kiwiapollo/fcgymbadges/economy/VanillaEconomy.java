@@ -1,7 +1,6 @@
 package kiwiapollo.fcgymbadges.economy;
 
 import kiwiapollo.fcgymbadges.FCGymBadges;
-import kiwiapollo.fcgymbadges.exception.EconomyLoadFailedException;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -13,28 +12,39 @@ public class VanillaEconomy implements Economy {
     private final Item currencyItem;
 
     public VanillaEconomy() {
-        assertValidCurrencyItem();
-        assertValidCurrencyAmount();
+        if (!isValidConfiguration()) {
+            FCGymBadges.LOGGER.error("Failed to load VanillaEconomy");
+            throw new IllegalStateException();
+        }
 
         this.currencyItem = Registries.ITEM.get(Identifier.of(FCGymBadges.config.vanillaCurrencyItem));
 
         FCGymBadges.LOGGER.info("Loaded VanillaEconomy");
     }
 
-    private void assertValidCurrencyAmount() {
+    private boolean isValidConfiguration() {
+        return isValidCurrencyItem() && isValidCurrencyAmount();
+    }
+
+    private boolean isValidCurrencyItem() {
         int currencyItemCount = (int) Math.floor(FCGymBadges.config.gymBadgeCreatePrice);
+
         if (currencyItemCount < 0) {
             FCGymBadges.LOGGER.error("Invalid value set to gymBadgeCreatePrice: {}", currencyItemCount);
-            FCGymBadges.LOGGER.error("Failed to load VanillaEconomy");
-            throw new EconomyLoadFailedException();
+            return false;
+
+        } else {
+            return true;
         }
     }
 
-    private void assertValidCurrencyItem() {
+    private boolean isValidCurrencyAmount() {
         if (currencyItem == Items.AIR) {
             FCGymBadges.LOGGER.error("Invalid item set to vanillaCurrencyItem: {}", FCGymBadges.config.vanillaCurrencyItem);
-            FCGymBadges.LOGGER.error("Failed to load VanillaEconomy");
-            throw new EconomyLoadFailedException();
+            return false;
+
+        } else {
+            return true;
         }
     }
 

@@ -1,11 +1,11 @@
-package kiwiapollo.fcgymbadges.economies;
+package kiwiapollo.fcgymbadges.economy;
 
-import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
+import kiwiapollo.fcgymbadges.FCGymBadges;
 import net.minecraft.server.network.ServerPlayerEntity;
 
 public class NullEconomy implements Economy {
     public NullEconomy() {
-        FractalCoffeeGymBadges.LOGGER.info("Loaded NullEconomy");
+        FCGymBadges.LOGGER.info("Loaded NullEconomy");
     }
 
     @Override
@@ -24,12 +24,7 @@ public class NullEconomy implements Economy {
     }
 
     @Override
-    public boolean isExistEnoughBalance(ServerPlayerEntity player, double amount) {
+    public boolean hasBalance(ServerPlayerEntity player, double amount) {
         return true;
-    }
-
-    @Override
-    public String getNotEnoughBalanceMessage() {
-        return "";
     }
 }

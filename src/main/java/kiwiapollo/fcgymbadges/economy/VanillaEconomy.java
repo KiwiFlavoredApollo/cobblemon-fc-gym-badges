@@ -1,8 +1,7 @@
-package kiwiapollo.fcgymbadges.economies;
+package kiwiapollo.fcgymbadges.economy;
 
-import kiwiapollo.fcgymbadges.FractalCoffeeGymBadges;
-import kiwiapollo.fcgymbadges.exceptions.InvalidCurrencyAmountException;
-import kiwiapollo.fcgymbadges.exceptions.InvalidVanillaCurrencyItemException;
+import kiwiapollo.fcgymbadges.FCGymBadges;
+import kiwiapollo.fcgymbadges.exception.EconomyLoadFailedException;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -11,42 +10,31 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class VanillaEconomy implements Economy {
-    private static final Item currencyItem =
-            Registries.ITEM.get(new Identifier(FractalCoffeeGymBadges.CONFIG.vanillaCurrencyItem));
+    private final Item currencyItem;
 
-    public VanillaEconomy() throws InvalidVanillaCurrencyItemException, InvalidCurrencyAmountException {
+    public VanillaEconomy() {
         assertValidCurrencyItem();
         assertValidCurrencyAmount();
 
-        FractalCoffeeGymBadges.LOGGER.info("Loaded VanillaEconomy");
+        this.currencyItem = Registries.ITEM.get(Identifier.of(FCGymBadges.config.vanillaCurrencyItem));
+
+        FCGymBadges.LOGGER.info("Loaded VanillaEconomy");
     }
 
-    private void assertValidCurrencyAmount() throws InvalidCurrencyAmountException {
-        int currencyItemCount = (int) Math.floor(FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice);
+    private void assertValidCurrencyAmount() {
+        int currencyItemCount = (int) Math.floor(FCGymBadges.config.gymBadgeCreatePrice);
         if (currencyItemCount < 0) {
-            FractalCoffeeGymBadges.LOGGER.error(
-                    String.format(
-                            "Invalid value set to gymBadgeCreatePrice: %d",
-                            currencyItemCount
-                    )
-            );
-
-            FractalCoffeeGymBadges.LOGGER.error("Failed to load VanillaEconomy");
-            throw new InvalidCurrencyAmountException();
+            FCGymBadges.LOGGER.error("Invalid value set to gymBadgeCreatePrice: {}", currencyItemCount);
+            FCGymBadges.LOGGER.error("Failed to load VanillaEconomy");
+            throw new EconomyLoadFailedException();
         }
     }
 
-    private void assertValidCurrencyItem() throws InvalidVanillaCurrencyItemException {
+    private void assertValidCurrencyItem() {
         if (currencyItem == Items.AIR) {
-            FractalCoffeeGymBadges.LOGGER.error(
-                    String.format(
-                            "Invalid item set to vanillaCurrencyItem: %s",
-                            FractalCoffeeGymBadges.CONFIG.vanillaCurrencyItem
-                    )
-            );
-
-            FractalCoffeeGymBadges.LOGGER.error("Failed to load VanillaEconomy");
-            throw new InvalidVanillaCurrencyItemException();
+            FCGymBadges.LOGGER.error("Invalid item set to vanillaCurrencyItem: {}", FCGymBadges.config.vanillaCurrencyItem);
+            FCGymBadges.LOGGER.error("Failed to load VanillaEconomy");
+            throw new EconomyLoadFailedException();
         }
     }
 
@@ -122,18 +110,7 @@ public class VanillaEconomy implements Economy {
     }
 
     @Override
-    public boolean isExistEnoughBalance(ServerPlayerEntity player, double amount) {
+    public boolean hasBalance(ServerPlayerEntity player, double amount) {
         return getBalance(player) >= amount;
-    }
-
-    @Override
-    public String getNotEnoughBalanceMessage() {
-        int currencyItemCount = (int) Math.floor(FractalCoffeeGymBadges.CONFIG.gymBadgeCreatePrice);
-        return String.format(
-                "Not enough item: %s %d",
-                Registries.ITEM.get(new Identifier(
-                        FractalCoffeeGymBadges.CONFIG.vanillaCurrencyItem)).getName().getString(),
-                currencyItemCount
-        );
     }
 }

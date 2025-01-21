@@ -8,7 +8,7 @@ public class EconomyFactory {
                 default -> new NullEconomy();
             };
 
-        } catch (IllegalStateException e) {
+        } catch (NullPointerException | IllegalStateException e) {
             return new NullEconomy();
         }
     }

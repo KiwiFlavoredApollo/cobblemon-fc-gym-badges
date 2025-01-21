@@ -17,11 +17,7 @@ public class EconomyFactory {
                 default -> new NullEconomy();
             };
 
-        } catch (
-                InvalidVanillaCurrencyItemException
-                | InvalidCurrencyAmountException
-                | EconomyNotLoadedException e
-        ) {
+        } catch (NullPointerException | InvalidVanillaCurrencyItemException | InvalidCurrencyAmountException | EconomyNotLoadedException e) {
             return new NullEconomy();
         }
     }

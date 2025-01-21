@@ -17,7 +17,7 @@ public class VanillaEconomy implements Economy {
             throw new IllegalStateException();
         }
 
-        this.currencyItem = Registries.ITEM.get(Identifier.of(FCGymBadges.config.vanillaCurrencyItem));
+        this.currencyItem = Registries.ITEM.get(Identifier.tryParse(FCGymBadges.config.vanillaCurrencyItem));
 
         FCGymBadges.LOGGER.info("Loaded VanillaEconomy");
     }

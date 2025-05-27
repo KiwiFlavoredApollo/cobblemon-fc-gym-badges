@@ -1,0 +1,25 @@
+{
+  "command.fcgymbadges.create_gymbadge.error.not_enough_balance": "Pas assez de monnaie.",
+
+  "command.fcgymbadges.reload_config.success": "Config rechargée avec succès.",
+
+  "item_group.fcgymbadges.title": "FC Badges",
+
+  "item.fcgymbadges.dark_badge": "Badge Obsi",
+  "item.fcgymbadges.dragon_badge": "Badge Dragon",
+  "item.fcgymbadges.electric_badge": "Badge Batterie",
+  "item.fcgymbadges.fire_badge": "Badge Pyrite",
+  "item.fcgymbadges.flying_badge": "Badge Essor",
+  "item.fcgymbadges.ghost_badge": "Badge Mortifer",
+  "item.fcgymbadges.ground_badge": "Badge Herbloc",
+  "item.fcgymbadges.ice_badge": "Badge Glacite",
+  "item.fcgymbadges.leaf_badge": "Badge Cerise",
+  "item.fcgymbadges.psychic_badge": "Badge Ajna",
+  "item.fcgymbadges.rock_badge": "Badge Lithos",
+  "item.fcgymbadges.unaware_badge": "Badge Ignorant",
+  "item.fcgymbadges.water_badge": "Badge Fluide",
+  "item.fcgymbadges.wing_badge": "Badge Élytre",
+  "item.fcgymbadges.icicle_badge": "Badge Glacine",
+  "item.fcgymbadges.bug_badge": "Badge Chitine",
+  "item.fcgymbadges.fairy_badge": "Badge Faë"
+}

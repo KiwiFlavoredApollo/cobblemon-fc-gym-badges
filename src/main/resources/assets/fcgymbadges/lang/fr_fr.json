@@ -1,9 +1,5 @@
 {
-  "command.fcgymbadges.create_gymbadge.error.not_enough_balance": "Pas assez de monnaie.",
-
-  "command.fcgymbadges.reload_config.success": "Config rechargée avec succès.",
-
-  "item_group.fcgymbadges.title": "FC Badges",
+  "item_group.fcgymbadges.fcgymbadges": "FC Badges",
 
   "item.fcgymbadges.dark_badge": "Badge Obsi",
   "item.fcgymbadges.dragon_badge": "Badge Dragon",

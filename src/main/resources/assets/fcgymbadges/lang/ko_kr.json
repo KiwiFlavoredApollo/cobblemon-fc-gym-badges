@@ -1,7 +1,5 @@
 {
-  "command.fcgymbadges.create_gymbadge.error.not_enough_balance": "돈이 부족합니다.",
-
-  "command.fcgymbadges.reload_config.success": "설정을 다시 불러들였습니다.",
+  "item_group.fcgymbadges.fcgymbadges": "FC 뱃지",
 
   "item.fcgymbadges.dark_badge": "악 뱃지",
   "item.fcgymbadges.dragon_badge": "드래곤 뱃지",
@@ -19,5 +17,25 @@
   "item.fcgymbadges.wing_badge": "날개 뱃지",
   "item.fcgymbadges.icicle_badge": "고드름 뱃지",
   "item.fcgymbadges.bug_badge": "벌레 뱃지",
-  "item.fcgymbadges.fairy_badge": "페어리 뱃지"
+  "item.fcgymbadges.fairy_badge": "페어리 뱃지",
+
+  "item.fcgymbadges.locked_dark_badge": "잠긴 악 뱃지",
+  "item.fcgymbadges.locked_dragon_badge": "잠긴 드래곤 뱃지",
+  "item.fcgymbadges.locked_electric_badge": "잠긴 전기 뱃지",
+  "item.fcgymbadges.locked_fire_badge": "잠긴 불꽃 뱃지",
+  "item.fcgymbadges.locked_flying_badge": "잠긴 비행 뱃지",
+  "item.fcgymbadges.locked_ghost_badge": "잠긴 고스트 뱃지",
+  "item.fcgymbadges.locked_ground_badge": "잠긴 땅 뱃지",
+  "item.fcgymbadges.locked_ice_badge": "잠긴 얼음 뱃지",
+  "item.fcgymbadges.locked_leaf_badge": "잠긴 풀 뱃지",
+  "item.fcgymbadges.locked_psychic_badge": "잠긴 에스퍼 뱃지",
+  "item.fcgymbadges.locked_rock_badge": "잠긴 바위 뱃지",
+  "item.fcgymbadges.locked_unaware_badge": "잠긴 천진 뱃지",
+  "item.fcgymbadges.locked_water_badge": "잠긴 물 뱃지",
+  "item.fcgymbadges.locked_wing_badge": "잠긴 날개 뱃지",
+  "item.fcgymbadges.locked_icicle_badge": "잠긴 고드름 뱃지",
+  "item.fcgymbadges.locked_bug_badge": "잠긴 벌레 뱃지",
+  "item.fcgymbadges.locked_fairy_badge": "잠긴 페어리 뱃지",
+
+  "item.fcgymbadges.gym_badge_unlocker": "뱃지 잠금해제 열쇠"
 }

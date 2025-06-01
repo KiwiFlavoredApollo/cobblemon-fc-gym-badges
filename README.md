@@ -3,63 +3,33 @@
 ## Features
 
 - Support for LuckPerms
-- Support for economy mods using OctoEconomyAPI (ex. EightsEconomyP)
-- Players with sufficient permissions can use commands to create gym badges
 
-## Configuration
+## !!! IMPORTANT !!!
 
-### Overview
+Starting from 1.8.0, configuration and commands are removed.
 
-`config/fcgymbadges/config.json`
+Gym Leader appointed players can no longer obtain Gym Badges by commands. Instead, they now have permission to unlock Locked Gym Badges to corresponding Gym Badges.
 
-```json
-{
-  "economy": "None",
-  "vanillaCurrencyItem": "minecraft:diamond",
-  "gymBadgeCreatePrice": 0
-}
-```
+Items in this mod do not have recipes. Server admins will have to provide them using data packs.
 
-- `economy`: `Vanilla` or `OctoEconomy`   
-- `vanillaCurrencyItem`: Any item specified by id (ex.`minecraft:gold_ingot`)
-- `gymBadgeCreatePrice`: Non-negative floating point number
+## Items
 
-Economy feature can be disabled if `economy` is set to any other random strings
+### Gym Badges
 
-### Case 1 Using `Vanilla` Economy
+Gym Badges are mere symbols for beating Gym Leaders.
 
-```json
-{
-  "economy": "Vanilla",
-  "vanillaCurrencyItem": "minecraft:iron_ingot",
-  "gymBadgeCreatePrice": 4
-}
-```
+### Locked Gym Badges
 
-Players with sufficient permission can create gym badges for the price of four iron ingots 
+There won't be acquisition method for Locked Gym Badges unless server admins add recipes for them.
 
-### Case 2 Using `OctoEconomy` Economy
+Locked Gym Badges can be used as stakes for challenging Gym Leaders. If players win, Gym Leaders return the Gym Badges after unlocking them. If Gym Leaders win, they can keep it and possibly make profit out of it.
 
-```json
-{
-  "economy": "OctoEconomy",
-  "vanillaCurrencyItem": "minecraft:diamond",
-  "gymBadgeCreatePrice": 100
-}
-```
+### Gym Badge Unlocker
 
-Players with sufficient permission can create gym badges for 100 dollars (or whatever currency their servers use)
+Gym Badge Unlocker can be used by those with sufficient permission. 
 
-## Commands
+For example, in order to unlock Locked Fire Badge (or convert to Fire Badge), the Gym Leader should either have: 
 
-### With LuckPerms installed
+- `fcgymbadges.firebadge.unlock` LuckPerms Permission
+- Permission Level of 2 at Minimum
 
-Given that a player has sufficient permission (`fcgymbadges.firebadge.create`), the player can execute following command to create Fire Badge
-
-```
-/fcgymbadges firebadge create
-```
-
-### Without LuckPerms installed
-
-Only players with op permission (minimum level of 2) can use the commands

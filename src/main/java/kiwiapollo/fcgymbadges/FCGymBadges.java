@@ -1,7 +1,7 @@
 package kiwiapollo.fcgymbadges;
 
 import com.mojang.logging.LogUtils;
-import kiwiapollo.fcgymbadges.item.GymBadgeCrafterItem;
+import kiwiapollo.fcgymbadges.item.LockedGymBadgeItem;
 import kiwiapollo.fcgymbadges.item.GymBadgeItemGroup;
 import kiwiapollo.fcgymbadges.item.GymBadgeItem;
 import net.fabricmc.api.ModInitializer;
@@ -41,12 +41,12 @@ public class FCGymBadges implements ModInitializer {
     }
 
     private void addGymBadgeCrafterItems() {
-        Arrays.stream(GymBadgeCrafterItem.values()).forEach(item -> {
+        Arrays.stream(LockedGymBadgeItem.values()).forEach(item -> {
             Registry.register(Registries.ITEM, item.getIdentifier(), item.getItem());
         });
 
         ItemGroupEvents.modifyEntriesEvent(GymBadgeItemGroup.GYM_BADGE_ITEM_GROUP_KEY).register(group -> {
-            Arrays.stream(GymBadgeCrafterItem.values()).forEach(item -> {
+            Arrays.stream(LockedGymBadgeItem.values()).forEach(item -> {
                 group.add(item.getItem());
             });
         });

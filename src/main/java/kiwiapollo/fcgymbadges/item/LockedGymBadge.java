@@ -7,12 +7,12 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class GymBadgeCrafter extends Item {
-    private final GymBadgeItem item;
+public class LockedGymBadge extends Item {
+    private final GymBadgeItem badge;
 
-    public GymBadgeCrafter(GymBadgeItem item) {
-        super(new Item.Settings());
-        this.item = item;
+    public LockedGymBadge(GymBadgeItem badge) {
+        super(new Settings().maxCount(1));
+        this.badge = badge;
     }
 
     @Override
@@ -22,19 +22,31 @@ public class GymBadgeCrafter extends Item {
         }
 
         if (!hasPermission(user)) {
-            return TypedActionResult.fail(user.getStackInHand(hand));
+            return TypedActionResult.pass(user.getStackInHand(hand));
         }
 
-        user.giveItemStack(item.getItem().getDefaultStack());
+        if (!user.getStackInHand(getOtherHand(hand)).getItem().equals(MiscItem.GYM_BADGE_UNLOCKER.getItem())) {
+            return TypedActionResult.pass(user.getStackInHand(hand));
+        }
 
         if (!user.isCreative()) {
             user.getStackInHand(hand).decrement(1);
+            user.getStackInHand(getOtherHand(hand)).decrement(1);
         }
+
+        user.giveItemStack(badge.getItem().getDefaultStack());
 
         return TypedActionResult.success(user.getStackInHand(hand));
     }
 
     private boolean hasPermission(PlayerEntity user) {
         return true;
+    }
+
+    private Hand getOtherHand(Hand hand) {
+        return switch (hand) {
+            case MAIN_HAND -> Hand.OFF_HAND;
+            case OFF_HAND -> Hand.MAIN_HAND;
+        };
     }
 }

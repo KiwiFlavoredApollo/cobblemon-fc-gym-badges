@@ -48,7 +48,7 @@ public class GymBadgeUnlocker extends Item {
     }
 
     private boolean hasPermission(PlayerEntity user, LockedGymBadge locked) {
-        return new PermissionPredicateFactory(locked).create().test(user);
+        return new PermissionPredicate(locked).test(user);
     }
 
     private boolean hasLockedGymBadgeInOtherHand(PlayerEntity user, Hand hand) {
@@ -66,24 +66,26 @@ public class GymBadgeUnlocker extends Item {
         };
     }
 
-    private static class PermissionPredicateFactory implements SimpleFactory<Predicate<PlayerEntity>> {
+    private static class PermissionPredicate implements Predicate<PlayerEntity> {
         private static final int OP_LEVEL = 2;
 
-        private final LockedGymBadge locked;
+        private final LuckPermsPredicate luckperms;
+        private final PermissionLevelPredicate level;
 
-        public PermissionPredicateFactory(LockedGymBadge locked) {
-            this.locked = locked;
+        public PermissionPredicate(LockedGymBadge locked) {
+            this.luckperms = new LuckPermsPredicate(getPermissionNodes(locked));
+            this.level = new PermissionLevelPredicate(OP_LEVEL);
         }
 
-        @Override
-        public Predicate<PlayerEntity> create() {
-            return new LuckPermsPredicate(getPermissionNodes()).or(new PermissionLevelPredicate(OP_LEVEL));
-        }
-
-        private List<String> getPermissionNodes() {
+        private List<String> getPermissionNodes(LockedGymBadge locked) {
             return List.of(
                     String.format("%s.%s.unlock", FCGymBadges.MOD_ID, locked.getPermissionNode())
             );
+        }
+
+        @Override
+        public boolean test(PlayerEntity player) {
+            return luckperms.test(player) || level.test(player);
         }
     }
 }

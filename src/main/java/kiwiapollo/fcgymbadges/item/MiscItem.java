@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 
 public enum MiscItem {
-    GYM_BADGE_UNLOCKER("gym_badge_unlocker", new Item(new Item.Settings()));
+    GYM_BADGE_UNLOCKER("gym_badge_unlocker", new GymBadgeUnlocker());
 
     private final Identifier identifier;
     private final Item item;

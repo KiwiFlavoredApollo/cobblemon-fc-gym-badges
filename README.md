@@ -26,10 +26,11 @@ Locked Gym Badges can be used as stakes for challenging Gym Leaders. If players 
 
 ### Gym Badge Unlocker
 
-Gym Badge Unlocker can be used by those with sufficient permission. 
+Gym Badge Unlocker can be used by those with sufficient permission.
 
-For example, in order to unlock Locked Fire Badge (or convert to Fire Badge), the Gym Leader should either have: 
+For example, in order to unlock Locked Fire Badge (or convert to Fire Badge), the Gym Leader should either have:
 
 - `fcgymbadges.firebadge.unlock` LuckPerms Permission
 - Permission Level of 2 at Minimum
 
+Gym Leaders use (right-click) Gym Badge Unlocker while holding Locked Gym Badges in the other hand.

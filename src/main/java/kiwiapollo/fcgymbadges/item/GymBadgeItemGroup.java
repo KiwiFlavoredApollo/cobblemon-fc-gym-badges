@@ -13,6 +13,6 @@ public class GymBadgeItemGroup {
     public static final RegistryKey<ItemGroup> GYM_BADGE_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(FCGymBadges.MOD_ID, "item_group"));
     public static final ItemGroup GYM_BADGE_ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(Registries.ITEM.get(Identifier.of(FCGymBadges.MOD_ID, "fire_badge"))))
-            .displayName(Text.translatable("Cobblemon FC Gym Badges"))
+            .displayName(Text.translatable("item_group.fcgymbadges.fcgymbadges"))
             .build();
 }

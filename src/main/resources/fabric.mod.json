@@ -35,10 +35,8 @@
 		"java": ">=17",
 		"fabric-api": "*"
 	},
-	"recommends": {
-		"cobblemon": "*"
-	},
 	"suggests": {
-		"luckperms": ">=5.4"
+		"cobblemon": "*",
+		"luckperms": "*"
 	}
 }

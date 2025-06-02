@@ -79,7 +79,7 @@ public class GymBadgeUnlocker extends Item {
 
         private List<String> getPermissionNodes(LockedGymBadge locked) {
             return List.of(
-                    String.format("%s.%s.unlock", FCGymBadges.MOD_ID, locked.getPermissionNode())
+                    String.format("%s.%s.%s", FCGymBadges.MOD_ID, locked.getPermissionNode(), "unlock")
             );
         }
 

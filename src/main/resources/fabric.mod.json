@@ -15,6 +15,9 @@
 	"icon": "assets/fcgymbadges/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			"kiwiapollo.fcgymbadges.datagen.DataGenerator"
+		],
 		"main": [
 			"kiwiapollo.fcgymbadges.FCGymBadges"
 		],

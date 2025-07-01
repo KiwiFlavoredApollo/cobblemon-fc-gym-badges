@@ -18,6 +18,7 @@
   "item.fcgymbadges.icicle_badge": "Icicle Badge",
   "item.fcgymbadges.bug_badge": "Bug Badge",
   "item.fcgymbadges.fairy_badge": "Fairy Badge",
+  "item.fcgymbadges.poison_badge": "Poison Badge",
 
   "item.fcgymbadges.locked_dark_badge": "Locked Dark Badge",
   "item.fcgymbadges.locked_dragon_badge": "Locked Dragon Badge",
@@ -36,6 +37,7 @@
   "item.fcgymbadges.locked_icicle_badge": "Locked Icicle Badge",
   "item.fcgymbadges.locked_bug_badge": "Locked Bug Badge",
   "item.fcgymbadges.locked_fairy_badge": "Locked Fairy Badge",
-  
+  "item.fcgymbadges.locked_poison_badge": "Locked Poison Badge",
+
   "item.fcgymbadges.gym_badge_unlocker": "Gym Badge Unlocker"
 }

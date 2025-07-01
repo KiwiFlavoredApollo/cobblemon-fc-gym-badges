@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "fcgymbadges:item/locked_dark_badge"
+    "layer0": "fcgymbadges:item/locked_badge"
   }
 }

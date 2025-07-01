@@ -21,7 +21,8 @@ public enum GymBadgeItem {
     UNAWARE_BADGE("unaware_badge", new GymBadge()),
     ICICLE_BADGE("icicle_badge", new GymBadge()),
     BUG_BADGE("bug_badge", new GymBadge()),
-    FAIRY_BADGE("fairy_badge", new GymBadge());
+    FAIRY_BADGE("fairy_badge", new GymBadge()),
+    POISON_BADGE("poison_badge", new GymBadge());
 
     private final Identifier identifier;
     private final Item item;

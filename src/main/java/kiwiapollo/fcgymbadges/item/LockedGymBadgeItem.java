@@ -21,7 +21,8 @@ public enum LockedGymBadgeItem {
     LOCKED_UNAWARE_BADGE("locked_unaware_badge", new LockedGymBadge(GymBadgeItem.UNAWARE_BADGE)),
     LOCKED_ICICLE_BADGE("locked_icicle_badge", new LockedGymBadge(GymBadgeItem.ICICLE_BADGE)),
     LOCKED_BUG_BADGE("locked_bug_badge", new LockedGymBadge(GymBadgeItem.BUG_BADGE)),
-    LOCKED_FAIRY_BADGE("locked_fairy_badge", new LockedGymBadge(GymBadgeItem.FAIRY_BADGE));
+    LOCKED_FAIRY_BADGE("locked_fairy_badge", new LockedGymBadge(GymBadgeItem.FAIRY_BADGE)),
+    LOCKED_POISON_BADGE("locked_poison_badge", new LockedGymBadge(GymBadgeItem.POISON_BADGE));
 
     private final Identifier identifier;
     private final Item item;

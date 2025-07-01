@@ -18,6 +18,7 @@
   "item.fcgymbadges.icicle_badge": "고드름 뱃지",
   "item.fcgymbadges.bug_badge": "벌레 뱃지",
   "item.fcgymbadges.fairy_badge": "페어리 뱃지",
+  "item.fcgymbadges.poison_badge": "독 뱃지",
 
   "item.fcgymbadges.locked_dark_badge": "잠긴 악 뱃지",
   "item.fcgymbadges.locked_dragon_badge": "잠긴 드래곤 뱃지",
@@ -36,6 +37,7 @@
   "item.fcgymbadges.locked_icicle_badge": "잠긴 고드름 뱃지",
   "item.fcgymbadges.locked_bug_badge": "잠긴 벌레 뱃지",
   "item.fcgymbadges.locked_fairy_badge": "잠긴 페어리 뱃지",
+  "item.fcgymbadges.locked_poison_badge": "잠긴 독 뱃지",
 
   "item.fcgymbadges.gym_badge_unlocker": "뱃지 잠금해제 열쇠"
 }

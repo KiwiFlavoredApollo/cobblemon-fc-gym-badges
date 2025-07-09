@@ -35,8 +35,6 @@ For example, in order to unlock Locked Fire Badge (or convert to Fire Badge), th
 
 Gym Leaders use (right-click) Gym Badge Unlocker while holding Locked Gym Badges in the other hand.
 
-## Credit
-
 ### Translation
 
 - [Voldir](https://discordapp.com/users/291233979196243968) (French)

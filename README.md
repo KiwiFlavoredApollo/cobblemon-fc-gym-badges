@@ -40,10 +40,15 @@ Gym Leaders use (right-click) Gym Badge Unlocker while holding Locked Gym Badges
 ### Texture
 
 - Dark Badge by Aragota
-- Unaware Badge by [JJAB33](https://discord.com/users/1037877484613541898)
+- Unaware Badge by JJAB33
 - Icicle Badge by JJAB33
 - Wing Badge by JJAB33
 
 ### Translation
 
-- [Voldir](https://discordapp.com/users/291233979196243968) (French)
+- French by Voldir
+
+### Links
+
+- [JJAB33](https://discordapp.com/users/1037877484613541898)
+- [Voldir](https://discordapp.com/users/291233979196243968) 

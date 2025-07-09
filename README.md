@@ -35,6 +35,15 @@ For example, in order to unlock Locked Fire Badge (or convert to Fire Badge), th
 
 Gym Leaders use (right-click) Gym Badge Unlocker while holding Locked Gym Badges in the other hand.
 
+## Credit
+
+### Texture
+
+- Dark Badge by Aragota
+- Unaware Badge by [JJAB33](https://discord.com/users/1037877484613541898)
+- Icicle Badge by JJAB33
+- Wing Badge by JJAB33
+
 ### Translation
 
 - [Voldir](https://discordapp.com/users/291233979196243968) (French)

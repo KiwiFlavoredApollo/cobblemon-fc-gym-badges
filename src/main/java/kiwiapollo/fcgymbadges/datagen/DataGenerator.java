@@ -28,8 +28,8 @@ public class DataGenerator implements DataGeneratorEntrypoint {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-            Arrays.stream(GymBadgeItem.values()).forEach(item -> getOrCreateTagBuilder(ModTagRegistry.BADGEBOX).add(item.getItem()));
-            Arrays.stream(LockedGymBadgeItem.values()).forEach(item -> getOrCreateTagBuilder(ModTagRegistry.BADGEBOX).add(item.getItem()));
+            GymBadgeItem.getAll().forEach(getOrCreateTagBuilder(ModTagRegistry.BADGEBOX)::add);
+            LockedGymBadgeItem.getAll().forEach(getOrCreateTagBuilder(ModTagRegistry.BADGEBOX)::add);
         }
     }
 }

@@ -2,41 +2,47 @@ package kiwiapollo.fcgymbadges.item;
 
 import kiwiapollo.fcgymbadges.FCGymBadges;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum GymBadgeItem {
-    DARK_BADGE("dark_badge", new GymBadge()),
-    LEAF_BADGE("leaf_badge", new GymBadge()),
-    FLYING_BADGE("flying_badge", new GymBadge()),
-    ROCK_BADGE("rock_badge", new GymBadge()),
-    ELECTRIC_BADGE("electric_badge", new GymBadge()),
-    FIRE_BADGE("fire_badge", new GymBadge()),
-    ICE_BADGE("ice_badge", new GymBadge()),
-    WATER_BADGE("water_badge", new GymBadge()),
-    DRAGON_BADGE("dragon_badge", new GymBadge()),
-    GROUND_BADGE("ground_badge", new GymBadge()),
-    PSYCHIC_BADGE("psychic_badge", new GymBadge()),
-    GHOST_BADGE("ghost_badge", new GymBadge()),
-    WING_BADGE("wing_badge", new GymBadge()),
-    UNAWARE_BADGE("unaware_badge", new GymBadge()),
-    ICICLE_BADGE("icicle_badge", new GymBadge()),
-    BUG_BADGE("bug_badge", new GymBadge()),
-    FAIRY_BADGE("fairy_badge", new GymBadge()),
-    POISON_BADGE("poison_badge", new GymBadge());
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class GymBadgeItem {
+    private static final List<Item> all = new ArrayList<>();
 
-    GymBadgeItem(String name, Item item) {
-        this.identifier = Identifier.of(FCGymBadges.MOD_ID, name);
-        this.item = item;
+    public static final Item DARK_BADGE = register("dark_badge", new GymBadge());
+    public static final Item LEAF_BADGE = register("leaf_badge", new GymBadge());
+    public static final Item FLYING_BADGE = register("flying_badge", new GymBadge());
+    public static final Item ROCK_BADGE = register("rock_badge", new GymBadge());
+    public static final Item ELECTRIC_BADGE = register("electric_badge", new GymBadge());
+    public static final Item FIRE_BADGE = register("fire_badge", new GymBadge());
+    public static final Item ICE_BADGE = register("ice_badge", new GymBadge());
+    public static final Item WATER_BADGE = register("water_badge", new GymBadge());
+    public static final Item DRAGON_BADGE = register("dragon_badge", new GymBadge());
+    public static final Item GROUND_BADGE = register("ground_badge", new GymBadge());
+    public static final Item PSYCHIC_BADGE = register("psychic_badge", new GymBadge());
+    public static final Item GHOST_BADGE = register("ghost_badge", new GymBadge());
+    public static final Item WING_BADGE = register("wing_badge", new GymBadge());
+    public static final Item UNAWARE_BADGE = register("unaware_badge", new GymBadge());
+    public static final Item ICICLE_BADGE = register("icicle_badge", new GymBadge());
+    public static final Item BUG_BADGE = register("bug_badge", new GymBadge());
+    public static final Item FAIRY_BADGE = register("fairy_badge", new GymBadge());
+    public static final Item POISON_BADGE = register("poison_badge", new GymBadge());
+
+    public static void initialize(){
+
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(FCGymBadges.MOD_ID, name);
+        Item registered = Registry.register(Registries.ITEM, identifier, item);
+        all.add(registered);
+        return registered;
     }
-    
-    public Item getItem() {
-        return item;
+
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

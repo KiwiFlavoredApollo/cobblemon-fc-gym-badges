@@ -4,15 +4,15 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 
 public class LockedGymBadge extends Item {
-    private final GymBadgeItem badge;
+    private final Item badge;
 
-    public LockedGymBadge(GymBadgeItem badge) {
+    public LockedGymBadge(Item badge) {
         super(new Settings().maxCount(1));
         this.badge = badge;
     }
 
     public Item getGymBadge() {
-        return badge.getItem();
+        return badge;
     }
 
     public String getPermissionNode() {

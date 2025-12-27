@@ -54,9 +54,7 @@ public class GymBadgeUnlocker extends Item {
     private boolean hasLockedGymBadgeInOtherHand(PlayerEntity user, Hand hand) {
         Item item = user.getStackInHand(getOtherHand(hand)).getItem();
 
-        return Arrays.stream(LockedGymBadgeItem.values())
-                .map(LockedGymBadgeItem::getItem)
-                .anyMatch(item::equals);
+        return LockedGymBadgeItem.getAll().stream().anyMatch(item::equals);
     }
 
     private Hand getOtherHand(Hand hand) {

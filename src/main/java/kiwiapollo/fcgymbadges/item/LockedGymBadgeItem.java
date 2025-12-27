@@ -2,41 +2,47 @@ package kiwiapollo.fcgymbadges.item;
 
 import kiwiapollo.fcgymbadges.FCGymBadges;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum LockedGymBadgeItem {
-    LOCKED_DARK_BADGE("locked_dark_badge", new LockedGymBadge(GymBadgeItem.DARK_BADGE)),
-    LOCKED_LEAF_BADGE("locked_leaf_badge", new LockedGymBadge(GymBadgeItem.LEAF_BADGE)),
-    LOCKED_FLYING_BADGE("locked_flying_badge", new LockedGymBadge(GymBadgeItem.FLYING_BADGE)),
-    LOCKED_ROCK_BADGE("locked_rock_badge", new LockedGymBadge(GymBadgeItem.ROCK_BADGE)),
-    LOCKED_ELECTRIC_BADGE("locked_electric_badge", new LockedGymBadge(GymBadgeItem.ELECTRIC_BADGE)),
-    LOCKED_FIRE_BADGE("locked_fire_badge", new LockedGymBadge(GymBadgeItem.FIRE_BADGE)),
-    LOCKED_ICE_BADGE("locked_ice_badge", new LockedGymBadge(GymBadgeItem.ICE_BADGE)),
-    LOCKED_WATER_BADGE("locked_water_badge", new LockedGymBadge(GymBadgeItem.WATER_BADGE)),
-    LOCKED_DRAGON_BADGE("locked_dragon_badge", new LockedGymBadge(GymBadgeItem.DRAGON_BADGE)),
-    LOCKED_GROUND_BADGE("locked_ground_badge", new LockedGymBadge(GymBadgeItem.GROUND_BADGE)),
-    LOCKED_PSYCHIC_BADGE("locked_psychic_badge", new LockedGymBadge(GymBadgeItem.PSYCHIC_BADGE)),
-    LOCKED_GHOST_BADGE("locked_ghost_badge", new LockedGymBadge(GymBadgeItem.GHOST_BADGE)),
-    LOCKED_WING_BADGE("locked_wing_badge", new LockedGymBadge(GymBadgeItem.WING_BADGE)),
-    LOCKED_UNAWARE_BADGE("locked_unaware_badge", new LockedGymBadge(GymBadgeItem.UNAWARE_BADGE)),
-    LOCKED_ICICLE_BADGE("locked_icicle_badge", new LockedGymBadge(GymBadgeItem.ICICLE_BADGE)),
-    LOCKED_BUG_BADGE("locked_bug_badge", new LockedGymBadge(GymBadgeItem.BUG_BADGE)),
-    LOCKED_FAIRY_BADGE("locked_fairy_badge", new LockedGymBadge(GymBadgeItem.FAIRY_BADGE)),
-    LOCKED_POISON_BADGE("locked_poison_badge", new LockedGymBadge(GymBadgeItem.POISON_BADGE));
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class LockedGymBadgeItem {
+    private static final List<Item> all = new ArrayList<>();
 
-    LockedGymBadgeItem(String name, Item item) {
-        this.identifier = Identifier.of(FCGymBadges.MOD_ID, name);
-        this.item = item;
+    public static final Item LOCKED_DARK_BADGE = register("locked_dark_badge", new LockedGymBadge(GymBadgeItem.DARK_BADGE));
+    public static final Item LOCKED_LEAF_BADGE = register("locked_leaf_badge", new LockedGymBadge(GymBadgeItem.LEAF_BADGE));
+    public static final Item LOCKED_FLYING_BADGE = register("locked_flying_badge", new LockedGymBadge(GymBadgeItem.FLYING_BADGE));
+    public static final Item LOCKED_ROCK_BADGE = register("locked_rock_badge", new LockedGymBadge(GymBadgeItem.ROCK_BADGE));
+    public static final Item LOCKED_ELECTRIC_BADGE = register("locked_electric_badge", new LockedGymBadge(GymBadgeItem.ELECTRIC_BADGE));
+    public static final Item LOCKED_FIRE_BADGE = register("locked_fire_badge", new LockedGymBadge(GymBadgeItem.FIRE_BADGE));
+    public static final Item LOCKED_ICE_BADGE = register("locked_ice_badge", new LockedGymBadge(GymBadgeItem.ICE_BADGE));
+    public static final Item LOCKED_WATER_BADGE = register("locked_water_badge", new LockedGymBadge(GymBadgeItem.WATER_BADGE));
+    public static final Item LOCKED_DRAGON_BADGE = register("locked_dragon_badge", new LockedGymBadge(GymBadgeItem.DRAGON_BADGE));
+    public static final Item LOCKED_GROUND_BADGE = register("locked_ground_badge", new LockedGymBadge(GymBadgeItem.GROUND_BADGE));
+    public static final Item LOCKED_PSYCHIC_BADGE = register("locked_psychic_badge", new LockedGymBadge(GymBadgeItem.PSYCHIC_BADGE));
+    public static final Item LOCKED_GHOST_BADGE = register("locked_ghost_badge", new LockedGymBadge(GymBadgeItem.GHOST_BADGE));
+    public static final Item LOCKED_WING_BADGE = register("locked_wing_badge", new LockedGymBadge(GymBadgeItem.WING_BADGE));
+    public static final Item LOCKED_UNAWARE_BADGE = register("locked_unaware_badge", new LockedGymBadge(GymBadgeItem.UNAWARE_BADGE));
+    public static final Item LOCKED_ICICLE_BADGE = register("locked_icicle_badge", new LockedGymBadge(GymBadgeItem.ICICLE_BADGE));
+    public static final Item LOCKED_BUG_BADGE = register("locked_bug_badge", new LockedGymBadge(GymBadgeItem.BUG_BADGE));
+    public static final Item LOCKED_FAIRY_BADGE = register("locked_fairy_badge", new LockedGymBadge(GymBadgeItem.FAIRY_BADGE));
+    public static final Item LOCKED_POISON_BADGE = register("locked_poison_badge", new LockedGymBadge(GymBadgeItem.POISON_BADGE));
+
+    public static void initialize(){
+
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(FCGymBadges.MOD_ID, name);
+        Item registered = Registry.register(Registries.ITEM, identifier, item);
+        all.add(registered);
+        return registered;
     }
 
-    public Item getItem() {
-        return item;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

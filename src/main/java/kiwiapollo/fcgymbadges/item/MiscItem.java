@@ -2,24 +2,30 @@ package kiwiapollo.fcgymbadges.item;
 
 import kiwiapollo.fcgymbadges.FCGymBadges;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public enum MiscItem {
-    GYM_BADGE_UNLOCKER("gym_badge_unlocker", new GymBadgeUnlocker());
+import java.util.ArrayList;
+import java.util.List;
 
-    private final Identifier identifier;
-    private final Item item;
+public class MiscItem {
+    private static final List<Item> all = new ArrayList<>();
 
-    MiscItem(String name, Item item) {
-        this.identifier = Identifier.of(FCGymBadges.MOD_ID, name);
-        this.item = item;
+    public static final Item GYM_BADGE_UNLOCKER = register("gym_badge_unlocker", new GymBadgeUnlocker());
+
+    public static void initialize(){
+
     }
 
-    public Identifier getIdentifier() {
-        return identifier;
+    private static Item register(String name, Item item) {
+        Identifier identifier = Identifier.of(FCGymBadges.MOD_ID, name);
+        Item registered = Registry.register(Registries.ITEM, identifier, item);
+        all.add(registered);
+        return registered;
     }
 
-    public Item getItem() {
-        return item;
+    public static List<Item> getAll() {
+        return new ArrayList<>(all);
     }
 }

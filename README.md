@@ -6,11 +6,7 @@
 
 ## !!! IMPORTANT !!!
 
-Starting from 1.8.0, configuration and commands are removed.
-
-Gym Leader appointed players can no longer obtain Gym Badges by commands. Instead, they now have permission to unlock Locked Gym Badges to corresponding Gym Badges.
-
-Items in this mod do not have recipes. Server admins will have to provide them using data packs.
+Starting from 1.9.0, Locked Gym Badges and Gym Badge Unlocker is removed.
 
 ## Items
 
@@ -18,22 +14,16 @@ Items in this mod do not have recipes. Server admins will have to provide them u
 
 Gym Badges are mere symbols for beating Gym Leaders.
 
-### Locked Gym Badges
+Gym Badges can be awarded to other players if Gym Leader player with permissions use (right-click) Gym Badge on the other players. Gym Leader players must have a diamond on the other hand.
 
-There won't be acquisition method for Locked Gym Badges unless server admins add recipes for them.
+## Permission Nodes
 
-Locked Gym Badges can be used as stakes for challenging Gym Leaders. If players win, Gym Leaders return the Gym Badges after unlocking them. If Gym Leaders win, they can keep it and possibly make profit out of it.
-
-### Gym Badge Unlocker
-
-Gym Badge Unlocker can be used by those with sufficient permission.
-
-For example, in order to unlock Locked Fire Badge (or convert to Fire Badge), the Gym Leader should either have:
-
-- `fcgymbadges.firebadge.unlock` LuckPerms Permission
-- Permission Level of 2 at Minimum
-
-Gym Leaders use (right-click) Gym Badge Unlocker while holding Locked Gym Badges in the other hand.
+```
+fcgymbadges.darkbadge
+fcgymbadges.flyingbadge
+fcgymbadges.iciclebadge
+...
+```
 
 ## Credit
 

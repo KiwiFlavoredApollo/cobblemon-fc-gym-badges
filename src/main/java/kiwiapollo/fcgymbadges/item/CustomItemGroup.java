@@ -23,8 +23,6 @@ public class CustomItemGroup {
 
         ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
             GymBadgeItem.getAll().forEach(group::add);
-            LockedGymBadgeItem.getAll().forEach(group::add);
-            MiscItem.getAll().forEach(group::add);
         });
     }
 }

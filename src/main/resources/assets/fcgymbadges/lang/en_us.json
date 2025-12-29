@@ -18,26 +18,5 @@
   "item.fcgymbadges.icicle_badge": "Icicle Badge",
   "item.fcgymbadges.bug_badge": "Bug Badge",
   "item.fcgymbadges.fairy_badge": "Fairy Badge",
-  "item.fcgymbadges.poison_badge": "Poison Badge",
-
-  "item.fcgymbadges.locked_dark_badge": "Locked Dark Badge",
-  "item.fcgymbadges.locked_dragon_badge": "Locked Dragon Badge",
-  "item.fcgymbadges.locked_electric_badge": "Locked Electric Badge",
-  "item.fcgymbadges.locked_fire_badge": "Locked Fire Badge",
-  "item.fcgymbadges.locked_flying_badge": "Locked Flying Badge",
-  "item.fcgymbadges.locked_ghost_badge": "Locked Ghost Badge",
-  "item.fcgymbadges.locked_ground_badge": "Locked Ground Badge",
-  "item.fcgymbadges.locked_ice_badge": "Locked Ice Badge",
-  "item.fcgymbadges.locked_leaf_badge": "Locked Leaf Badge",
-  "item.fcgymbadges.locked_psychic_badge": "Locked Psychic Badge",
-  "item.fcgymbadges.locked_rock_badge": "Locked Rock Badge",
-  "item.fcgymbadges.locked_unaware_badge": "Locked Unaware Badge",
-  "item.fcgymbadges.locked_water_badge": "Locked Water Badge",
-  "item.fcgymbadges.locked_wing_badge": "Locked Wing Badge",
-  "item.fcgymbadges.locked_icicle_badge": "Locked Icicle Badge",
-  "item.fcgymbadges.locked_bug_badge": "Locked Bug Badge",
-  "item.fcgymbadges.locked_fairy_badge": "Locked Fairy Badge",
-  "item.fcgymbadges.locked_poison_badge": "Locked Poison Badge",
-
-  "item.fcgymbadges.gym_badge_unlocker": "Gym Badge Unlocker"
+  "item.fcgymbadges.poison_badge": "Poison Badge"
 }

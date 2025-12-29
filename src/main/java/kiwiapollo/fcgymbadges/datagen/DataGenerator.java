@@ -1,7 +1,6 @@
 package kiwiapollo.fcgymbadges.datagen;
 
 import kiwiapollo.fcgymbadges.item.GymBadgeItem;
-import kiwiapollo.fcgymbadges.item.LockedGymBadgeItem;
 import kiwiapollo.fcgymbadges.item.ModTagRegistry;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -10,7 +9,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.item.Item;
 import net.minecraft.registry.*;
 
-import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 
 public class DataGenerator implements DataGeneratorEntrypoint {
@@ -29,7 +27,6 @@ public class DataGenerator implements DataGeneratorEntrypoint {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
             GymBadgeItem.getAll().forEach(getOrCreateTagBuilder(ModTagRegistry.BADGEBOX)::add);
-            LockedGymBadgeItem.getAll().forEach(getOrCreateTagBuilder(ModTagRegistry.BADGEBOX)::add);
         }
     }
 }

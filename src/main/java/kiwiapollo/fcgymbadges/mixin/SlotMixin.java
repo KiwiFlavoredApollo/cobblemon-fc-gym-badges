@@ -29,6 +29,10 @@ public abstract class SlotMixin {
 
     @Inject(method = "canTakeItems", at = @At("HEAD"), cancellable = true)
     public void allowCraftingBadgesOnlyForThoseWithPermission(PlayerEntity player, CallbackInfoReturnable<Boolean> cir) {
+        if (player.getWorld().isClient()) {
+            return;
+        }
+
         if (!isCraftingResultSlot((Slot) (Object) this)) {
             return;
         }

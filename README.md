@@ -8,13 +8,13 @@
 
 Starting from 1.9.0, Locked Gym Badges and Gym Badge Unlocker is removed.
 
-## Items
+## Gym Badge Crafting
 
-### Gym Badges
+Crafting Gym Badges are disabled for those without permissions represented either by LuckPerms permission node or op level 2.
 
-Gym Badges are mere symbols for beating Gym Leaders.
+## Create Mod
 
-Gym Badges can be awarded to other players if Gym Leader player with permissions use (right-click) Gym Badge on the other players. Gym Leader players must have a diamond on the other hand.
+The new permission system doesn't block when crafted with Create blocks (such as Mechanical Crafters or Mixers). In order to mandate crafting badges by hand, name the recipe JSON file like `[recipe]_manual_only.json`.
 
 ## Permission Nodes
 

@@ -57,7 +57,7 @@ public abstract class SlotMixin {
     }
 
     private boolean isBadgeItem(ItemStack stack) {
-        return CustomItem.getAll().stream().anyMatch(stack::isOf);
+        return stack.getItem() instanceof GymBadge;
     }
 
     private boolean hasPermission(PlayerEntity player, GymBadge badge) {

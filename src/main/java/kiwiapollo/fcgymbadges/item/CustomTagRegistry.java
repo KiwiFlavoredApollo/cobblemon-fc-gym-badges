@@ -5,6 +5,6 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
-public class ModTagRegistry {
+public class CustomTagRegistry {
     public static final TagKey<Item> BADGEBOX = TagKey.of(RegistryKeys.ITEM, Identifier.of("badgebox", "badges"));
 }

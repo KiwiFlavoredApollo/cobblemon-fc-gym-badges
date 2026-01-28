@@ -18,5 +18,7 @@
   "item.fcgymbadges.icicle_badge": "고드름 뱃지",
   "item.fcgymbadges.bug_badge": "벌레 뱃지",
   "item.fcgymbadges.fairy_badge": "페어리 뱃지",
-  "item.fcgymbadges.poison_badge": "독 뱃지"
+  "item.fcgymbadges.poison_badge": "독 뱃지",
+
+  "item.fcgymbadges.error.no_permission": "당신은 이 뱃지를 조합할 수 있는 권한이 없습니다."
 }

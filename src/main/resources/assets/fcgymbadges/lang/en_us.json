@@ -18,5 +18,7 @@
   "item.fcgymbadges.icicle_badge": "Icicle Badge",
   "item.fcgymbadges.bug_badge": "Bug Badge",
   "item.fcgymbadges.fairy_badge": "Fairy Badge",
-  "item.fcgymbadges.poison_badge": "Poison Badge"
+  "item.fcgymbadges.poison_badge": "Poison Badge",
+
+  "item.fcgymbadges.error.no_permission": "You do not have permission to craft this badge."
 }

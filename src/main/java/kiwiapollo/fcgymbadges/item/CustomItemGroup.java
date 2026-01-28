@@ -22,7 +22,7 @@ public class CustomItemGroup {
         Registry.register(Registries.ITEM_GROUP, ITEM_GROUP_REGISTRY_KEY, ITEM_GROUP);
 
         ItemGroupEvents.modifyEntriesEvent(ITEM_GROUP_REGISTRY_KEY).register(group -> {
-            GymBadgeItem.getAll().forEach(group::add);
+            CustomItem.getAll().forEach(group::add);
         });
     }
 }

@@ -1,11 +1,12 @@
 {
-	"required": true,
-	"package": "kiwiapollo.fcgymbadges.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ExampleMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "kiwiapollo.fcgymbadges.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "SlotMixin",
+    "ExampleMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

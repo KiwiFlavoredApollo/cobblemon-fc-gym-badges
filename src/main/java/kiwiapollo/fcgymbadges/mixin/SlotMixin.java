@@ -1,10 +1,9 @@
 package kiwiapollo.fcgymbadges.mixin;
 
 import kiwiapollo.fcgymbadges.FCGymBadges;
-import kiwiapollo.fcgymbadges.item.CustomItem;
 import kiwiapollo.fcgymbadges.item.GymBadge;
 import kiwiapollo.fcgymbadges.predicate.LuckPermsPredicate;
-import kiwiapollo.fcgymbadges.predicate.CreativeLevelOpPredicate;
+import kiwiapollo.fcgymbadges.predicate.CreativeLevelTwoOpPredicate;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -66,7 +65,7 @@ public abstract class SlotMixin {
 
     private boolean hasPermission(PlayerEntity player, GymBadge badge) {
         LuckPermsPredicate luckperms = new LuckPermsPredicate(getPermissionNodes(badge));
-        CreativeLevelOpPredicate level = new CreativeLevelOpPredicate();
+        CreativeLevelTwoOpPredicate level = new CreativeLevelTwoOpPredicate();
 
         return luckperms.test(player) || level.test(player);
     }

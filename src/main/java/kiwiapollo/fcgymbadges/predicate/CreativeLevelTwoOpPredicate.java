@@ -4,8 +4,8 @@ import net.minecraft.entity.player.PlayerEntity;
 
 import java.util.function.Predicate;
 
-public class CreativeLevelOpPredicate implements Predicate<PlayerEntity> {
-    public CreativeLevelOpPredicate() {
+public class CreativeLevelTwoOpPredicate implements Predicate<PlayerEntity> {
+    public CreativeLevelTwoOpPredicate() {
 
     }
 

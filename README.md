@@ -8,7 +8,7 @@ Starting from 1.9.0, Locked Gym Badges and Gym Badge Unlocker is removed. Instea
 
 ### Create Mod
 
-The new permission system does not prevent crafting via Create blocks (such as Mechanical Crafters or Mixers). To require badges to be crafted by hand, name the recipe JSON file [recipe]_manual_only.json.
+The new permission system does not prevent crafting via Create blocks (such as Mechanical Crafters or Mixers). To require badges to be crafted by hand, name the recipe JSON file `[recipe]_manual_only.json`.
 
 ## Features
 
